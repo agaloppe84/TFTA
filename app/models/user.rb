@@ -6,5 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :foodtrucks
   has_many :reservations
-  has_many :order_lines, through: :reservations, source: :foodtrucks
+  has_many :order_lines, through: :reservations
+
+
+
 end
