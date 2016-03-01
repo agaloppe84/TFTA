@@ -8,6 +8,9 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+gem 'money-rails'
+gem 'stripe'
+gem 'coffee-script', '~> 2.4', '>= 2.4.1'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -24,8 +27,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'
-  
-  
+
+
 end
 
 group :production do
