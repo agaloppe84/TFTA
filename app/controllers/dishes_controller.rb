@@ -1,0 +1,53 @@
+class DishesController < ApplicationController
+end
+
+ skip_before_action :authenticate_user!, only: [:index, :show, :create]
+ before_action :set_dish, only: [:show, :edit, :update, :destroy]
+
+
+
+def index
+    @dishs = Dish.all
+  end
+
+  def show
+    @dish = Dish.find(params[:id])
+  end
+
+  def new
+    @dish = dish.new
+  end
+
+  def edit
+    @dish.save
+  end
+
+ def update
+    @dish = Dish.find(params[:id])
+    if @dish.update(dish_params)
+      redirect_to #dish_path(@dish)
+    else
+      render :edit
+    end
+    # Will raise ActiveModel::ForbiddenAttributesError
+  end
+ end
+
+  def destroy
+    @dish = Dish.find(params[:id])
+    @dish.destroy
+    redirect_to
+  end
+
+  private
+
+  def set_dish
+    @dish = Dish.find(params[:id])
+  end
+
+  def dish_params
+    params.require(:dish).permit(:name, :description, :price, :picture, :address)
+  end
+
+
+end

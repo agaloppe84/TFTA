@@ -10,5 +10,6 @@ class Dish < ActiveRecord::Base
   validates :price, presence: true
   validates :photo, presence: true
   validates :category, presence: true
-
 end
+
+
