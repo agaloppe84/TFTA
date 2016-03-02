@@ -3,6 +3,6 @@ class CulinaryStyle < ActiveRecord::Base
 
   validates :title, presence: true
 
-  CATEGORIES = %w( indien afro french  )
+  CATEGORIES = %w( indien afro français mexicain burger bagel )
 
 end
