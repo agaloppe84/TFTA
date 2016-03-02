@@ -1,0 +1,13 @@
+<h1>index food truck</h1>
+
+<hr>
+
+<% @foodtrucks.each do |foodtruck| %>
+  <div class="text-center">
+    <h2>nom: <%= foodtruck.name %></h2>
+    <h3>format: <%= foodtruck.format %></h3>
+
+    <h5><%= link_to "see details", foodtruck_path(foodtruck) %></h5>
+    <hr>
+  </div>
+<% end %>
