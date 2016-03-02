@@ -8,12 +8,21 @@ Dish.destroy_all
 CulinaryStyle.destroy_all
 
 puts "Seed started"
- # -------------------------------- Users --------------------------------- #
+ # -------------------------------- Users consommateurs --------------------------------- #
 puts "Seeding User"
 
-michel = User.create!(first_name: 'michel',last_name: 'patoudatchi',address: "30 place de la bourse, bordeaux",age:'22' ,trucker: false, email:'michel@gmail.com', password: "1234soleil")
-albert = User.create!(first_name: 'albert',last_name: 'roso',address: "15 rue amélie, paris",age:'25' ,trucker: false, email:'albert@gmail.com', password: "1234soleil")
-robert = User.create!(first_name: 'robert',last_name: 'lamarche',address: "15 cours jean pénicaud, limoges",age:'26' ,trucker: true, email:'robert@gmail.com', password: "1234soleil")
+michel = User.create!(first_name: 'michel',last_name: 'patoudatchi',address: "5 place de la bourse, bordeaux",age:'22' ,trucker: false, email:'michel@gmail.com', password: "1234soleil")
+albert = User.create!(first_name: 'albert',last_name: 'roso',address: "10 rue amélie, paris",age:'25' ,trucker: false, email:'albert@gmail.com', password: "1234soleil")
+robert = User.create!(first_name: 'robert',last_name: 'lamarche',address: "15 cours jean pénicaud, limoges",age:'26' ,trucker: false, email:'robert@gmail.com', password: "1234soleil")
+jean = User.create!(first_name: 'jean',last_name: 'domingo',address: "20 cours jean pénicaud, limoges",age:'26' ,trucker: false, email:'jean@gmail.com', password: "1234soleil")
+fred = User.create!(first_name: 'fred',last_name: 'florus',address: "25 cours jean pénicaud, limoges",age:'26' ,trucker: false, email:'fred@gmail.com', password: "1234soleil")
+# -------------------------------- Users truckers --------------------------------- #
+
+paul = User.create!(first_name: 'paul',last_name: 'riguas',address: "30 place de la bourse, bordeaux",age:'23' ,trucker: true, email:'paul@gmail.com', password: "1234soleil")
+pierre = User.create!(first_name: 'pierre',last_name: 'zaio',address: "40 rue amélie, paris",age:'21' ,trucker: true, email:'pierre@gmail.com', password: "1234soleil")
+agathe = User.create!(first_name: 'agathe',last_name: 'faio',address: "50 cours jean pénicaud, limoges",age:'30' ,trucker: true, email:'agathe@gmail.com', password: "1234soleil")
+dorothée = User.create!(first_name: 'dorothée',last_name: 'maio',address: "60 cours jean pénicaud, limoges",age:'35' ,trucker: true, email:'dorothée@gmail.com', password: "1234soleil")
+martin = User.create!(first_name: 'martin',last_name: 'tatin',address: "70 cours jean pénicaud, limoges",age:'33' ,trucker: true, email:'martin@gmail.com', password: "1234soleil")
 
 puts "END"
 
