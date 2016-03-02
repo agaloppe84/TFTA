@@ -1,13 +1,13 @@
 class DishesController < ApplicationController
-end
-
- skip_before_action :authenticate_user!, only: [:index, :show, :create]
- before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
 
+  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new]
+  before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
-def index
-    @dishs = Dish.all
+
+
+  def index
+    @dishes = Dish.all
   end
 
   def show
@@ -15,14 +15,15 @@ def index
   end
 
   def new
-    @dish = dish.new
+    @foodtruck = Foodtruck.find(params[:foodtruck_id])
+    @dish = Dish.new()
   end
 
   def edit
     @dish.save
   end
 
- def update
+  def update
     @dish = Dish.find(params[:id])
     if @dish.update(dish_params)
       redirect_to #dish_path(@dish)
@@ -31,7 +32,7 @@ def index
     end
     # Will raise ActiveModel::ForbiddenAttributesError
   end
- end
+
 
   def destroy
     @dish = Dish.find(params[:id])
@@ -50,8 +51,6 @@ def index
   end
 
   def dish_params
-    params.require(:dish).permit(:name, :description, :price, :picture, :address)
+    params.require(:dish).permit(:name, :description, :price, :picture, :address, :bio, :gluten, :category, :vegetarien)
   end
-
-
 end
