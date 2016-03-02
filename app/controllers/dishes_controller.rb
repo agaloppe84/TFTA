@@ -1,9 +1,6 @@
 class DishesController < ApplicationController
-
-
   skip_before_action :authenticate_user!, only: [:index, :show, :create, :new]
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
-
 
 
   def index
@@ -11,12 +8,13 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:foodtruck_id])
   end
 
   def new
     @foodtruck = Foodtruck.find(params[:foodtruck_id])
-    @dish = Dish.new()
+    @dish = Dish.new(@foodtruck)
+    #@redirect_to
   end
 
   def edit
@@ -24,7 +22,7 @@ class DishesController < ApplicationController
   end
 
   def update
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:foodtruck_id])
     if @dish.update(dish_params)
       redirect_to #dish_path(@dish)
     else
@@ -35,7 +33,7 @@ class DishesController < ApplicationController
 
 
   def destroy
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:foodtruck_id])
     @dish.destroy
 <<<<<<< 88c4133be50994b7782f9bf32097dc2e36d2de78
     redirect_to dishes_path # route a verifier
@@ -47,7 +45,7 @@ class DishesController < ApplicationController
   private
 
   def set_dish
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find(params[:foodtruck_id])
   end
 
   def dish_params

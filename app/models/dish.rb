@@ -12,8 +12,8 @@ class Dish < ActiveRecord::Base
   validates :description, presence: true
   validates :price, presence: true
   validates :photo, presence: true
-  validates :category, presence: true
   validates :category, inclusion: { in: CATEGORIES}
+  validates :category, presence: true
 end
 
 
