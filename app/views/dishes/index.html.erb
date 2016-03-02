@@ -1,0 +1,6 @@
+
+
+
+<% @dishes.each do |dish| %>
+  <%= link_to dish.name, dish_path(dish) %>
+<% end %>
