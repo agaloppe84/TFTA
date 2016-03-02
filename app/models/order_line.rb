@@ -8,5 +8,4 @@ class OrderLine < ActiveRecord::Base
   validates :reservation, presence: true
 
   validates :number_of_meals, presence: true
-  validates :menu_price, presence: true
 end

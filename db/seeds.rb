@@ -16,33 +16,7 @@ albert = User.create!(first_name: 'albert',last_name: 'roso',address: "15 rue am
 robert = User.create!(first_name: 'robert',last_name: 'lamarche',address: "15 cours jean pénicaud, limoges",age:'26' ,trucker: true, email:'robert@gmail.com', password: "1234soleil")
 
 puts "END"
-# ------------------------- resavation ------------------------- #
-puts "Seeding Reservations"
 
-resa1 = Reservation.create!(user: michel, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le bagel', mark:'4',payment_cents: '750',address: '30 place de la bourse, bordeaux',
-      accepted_at:"???", refused_at:"????")
-resa2 = Reservation.create!(user: albert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le burger', mark:'3',payment_cents: '1000',address: '15 rue amélie, paris',
-      accepted_at:"???", refused_at:"????")
-resa3 = Reservation.create!(user: robert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le tacos', mark:'5',payment_cents: '800',address: '15 cours jean pénicaud, limoges',
-      accepted_at:"???", refused_at:"????")
-puts "END"
-# -------------------------------- Order_lines --------------------------------- #
-puts "Seeding Order_lines"
-
-
-panier1 = OrderLine.create!(number_of_meals:"50", menu_price_cents: "750")
-panier2 = OrderLine.create!(number_of_meals:"80", menu_price_cents: "1000")
-panier3 = OrderLine.create!(number_of_meals:"100", menu_price_cents: "800")
-
-puts "END"
-# -------------------------------- Menu --------------------------------- #
-puts "Seeding Menu"
-
-menus1 = Menu.create!(name:'big bagel', description: "menu bagel complet avec salade", photo:'???', price_cents:'750')
-menus2 = Menu.create!(name:'big burger', description: "menu burger complet avec frites", photo:'???', price_cents:'1000')
-menus3 = Menu.create!(name:'big tacos', description: "menu tacos complet avec accompagnement", photo:'???', price_cents:'800')
-
-puts "END Seeding Menu"
 # -------------------------------- Foodtruck --------------------------------- #
 puts "Seeding Foodtruck"
 
@@ -51,6 +25,7 @@ westcoast = Foodtruck.create!(sku:"", name:"West Coast", format:"truck", min_cap
 eltacodeldiablo = Foodtruck.create!(sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris")
 
 puts "END"
+
 # -------------------------------- Dish --------------------------------- #
 puts "Seeding Dishes"
 
@@ -59,6 +34,50 @@ dishes2 = Dish.create!(foodtruck: westcoast, name:"bagel", description:"un super
 dishes3 = Dish.create!(foodtruck: eltacodeldiablo, name:"bagel", description:"un super bagel" ,price_cents:"750", photo:"http://", category:"dessert", gluten: false, bio: false, vegetarien: false)
 
 puts "END"
+
+# -------------------------------- Menu --------------------------------- #
+puts "Seeding Menu"
+
+menus1 = Menu.create!(foodtruck: bagin, name:'big bagel', description: "menu bagel complet avec salade", price_cents:'750')
+menus2 = Menu.create!(foodtruck: westcoast, name:'big burger', description: "menu burger complet avec frites", price_cents:'1000')
+menus3 = Menu.create!(foodtruck: eltacodeldiablo, name:'big tacos', description: "menu tacos complet avec accompagnement", price_cents:'800')
+menus4 = Menu.create!(user: michel)
+
+puts "END Seeding Menu"
+
+# -------------------------------- Menu Dishes--------------------------------- #
+puts "Seeding Menu Dishes"
+
+MenuDish.create!(menu: menus1, dish: dishes1)
+MenuDish.create!(menu: menus1, dish: dishes2)
+MenuDish.create!(menu: menus2, dish: dishes2)
+MenuDish.create!(menu: menus2, dish: dishes3)
+MenuDish.create!(menu: menus3, dish: dishes1)
+MenuDish.create!(menu: menus3, dish: dishes3)
+MenuDish.create!(menu: menus4, dish: dishes1)
+MenuDish.create!(menu: menus4, dish: dishes2)
+MenuDish.create!(menu: menus4, dish: dishes3)
+
+puts "END Seeding Menu"
+
+# ------------------------- resavation ------------------------- #
+puts "Seeding Reservations"
+
+resa1 = Reservation.create!(foodtruck: bagin, user: michel, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le bagel', mark:'4',payment_cents: '750',address: '30 place de la bourse, bordeaux')
+resa2 = Reservation.create!(foodtruck: bagin, user: albert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le burger', mark:'3',payment_cents: '1000',address: '15 rue amélie, paris')
+resa3 = Reservation.create!(foodtruck: westcoast, user: robert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le tacos', mark:'5',payment_cents: '800',address: '15 cours jean pénicaud, limoges')
+puts "END"
+
+# -------------------------------- Order_lines --------------------------------- #
+puts "Seeding Order_lines"
+
+
+panier1 = OrderLine.create!(reservation: resa1, menu: menus1, number_of_meals:"50", menu_price_cents: "750")
+panier2 = OrderLine.create!(reservation: resa2, menu: menus2, number_of_meals:"80", menu_price_cents: "1000")
+panier3 = OrderLine.create!(reservation: resa3, menu: menus3, number_of_meals:"100", menu_price_cents: "800")
+
+puts "END"
+
 # -------------------------------- Culinary_styles --------------------------------- #
 puts "Seeding culinary_styles "
 

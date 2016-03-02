@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
   belongs_to :foodtruck
-  has_many :compositions
+  has_many :menu_dishes
 
   monetize :price_cents
 

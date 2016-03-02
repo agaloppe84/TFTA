@@ -11,20 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301175034) do
+ActiveRecord::Schema.define(version: 20160302151848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "compositions", force: :cascade do |t|
-    t.integer  "dish_id"
-    t.integer  "menu_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "compositions", ["dish_id"], name: "index_compositions_on_dish_id", using: :btree
-  add_index "compositions", ["menu_id"], name: "index_compositions_on_menu_id", using: :btree
 
   create_table "culinary_styles", force: :cascade do |t|
     t.string   "title"
@@ -67,6 +57,16 @@ ActiveRecord::Schema.define(version: 20160301175034) do
   add_index "foodtrucks", ["culinary_style_id"], name: "index_foodtrucks_on_culinary_style_id", using: :btree
   add_index "foodtrucks", ["user_id"], name: "index_foodtrucks_on_user_id", using: :btree
 
+  create_table "menu_dishes", force: :cascade do |t|
+    t.integer  "menu_id"
+    t.integer  "dish_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "menu_dishes", ["dish_id"], name: "index_menu_dishes_on_dish_id", using: :btree
+  add_index "menu_dishes", ["menu_id"], name: "index_menu_dishes_on_menu_id", using: :btree
+
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -75,9 +75,11 @@ ActiveRecord::Schema.define(version: 20160301175034) do
     t.integer  "foodtruck_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "user_id"
   end
 
   add_index "menus", ["foodtruck_id"], name: "index_menus_on_foodtruck_id", using: :btree
+  add_index "menus", ["user_id"], name: "index_menus_on_user_id", using: :btree
 
   create_table "order_lines", force: :cascade do |t|
     t.integer  "number_of_meals"
@@ -131,12 +133,13 @@ ActiveRecord::Schema.define(version: 20160301175034) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "compositions", "dishes"
-  add_foreign_key "compositions", "menus"
   add_foreign_key "dishes", "foodtrucks"
   add_foreign_key "foodtrucks", "culinary_styles"
   add_foreign_key "foodtrucks", "users"
+  add_foreign_key "menu_dishes", "dishes"
+  add_foreign_key "menu_dishes", "menus"
   add_foreign_key "menus", "foodtrucks"
+  add_foreign_key "menus", "users"
   add_foreign_key "order_lines", "menus"
   add_foreign_key "order_lines", "reservations"
   add_foreign_key "reservations", "foodtrucks"

@@ -3,6 +3,7 @@ class Foodtruck < ActiveRecord::Base
   belongs_to :culinary_style
   has_many :dishes
   has_many :menus
+  has_many :dishes, through: :menus
   has_many :reservations
   has_many :order_lines, through: :reservations
 
