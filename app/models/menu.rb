@@ -3,6 +3,8 @@ class Menu < ActiveRecord::Base
   has_many :order_lines
   has_many :compositions
 
+  monetize :price_cents
+
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true
