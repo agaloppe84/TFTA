@@ -36,7 +36,7 @@ def index
   def destroy
     @dish = Dish.find(params[:id])
     @dish.destroy
-    redirect_to dishes_path
+    redirect_to dishes_path # route a verifier
   end
 
   private
