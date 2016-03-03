@@ -12,8 +12,9 @@ class DishesController < ApplicationController
   end
 
   def new
-    @foodtruck = Foodtruck.find(params[:foodtruck])
-    @dish = Dish.new(@foodtruck)
+    @foodtruck = Foodtruck.find(params[:foodtruck_id])
+    @dish = Dish.new(params[:foodtruck])
+
     #@redirect_to
   end
 
