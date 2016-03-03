@@ -1,0 +1,23 @@
+<h3 class="text-center"> Devenir Partenaire </h3>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-sm-offset-3 col-xs-offset-3">
+      <%= simple_form_for @foodtruck do |f| %>
+        <%= f.input :name, label: 'Nom de votre FoodTruck', placeholder: 'Nom de votre FoodTruck' %>
+        <%= f.input :address, label: 'Ville de Travail', placeholder: 'Bordeaux' %>
+        <%= f.input :format, collection: Foodtruck.format, as: :radio_buttons, checked: Foodtruck.format.first %>
+
+        <%= f.input :min_capacity, label: 'capacité minimum', placeholder: '40'%>
+        <%= f.input :max_capacity, label: 'capacité maximum', placeholder: '250'%>
+        <%= f.input :free_radius_max, label: 'free radius max', placeholder: '30 - nombre de KM de déplacement gratuit'%>
+        <%= f.input :radius_max, label: 'radius max', placeholder: '300 - Nombre max de KM pour le déplacement'%>
+        <%= f.input :km_price, label: 'prix au km', placeholder: '1€'%>
+
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
