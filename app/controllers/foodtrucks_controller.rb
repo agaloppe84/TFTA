@@ -59,6 +59,6 @@ class FoodtrucksController < ApplicationController
   end
 
   def foodtruck_params
-    params.require(:foodtruck).permit(:name, :description, :price, :address)
+    params.require(:foodtruck).permit(:name, :format, :min_capacity, :max_capacity, :free_radius_max, :radius_max, :km_price, :address)
   end
 end
