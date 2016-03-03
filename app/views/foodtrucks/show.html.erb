@@ -7,4 +7,7 @@
   <p>max KM gratuits<%= @foodtruck.free_radius_max %></p>
   <p>max Km déplacement<%= @foodtruck.radius_max %></p>
   <p>prix du KM: <%= @foodtruck.km_price %></p>
+  <h5><%= link_to "Commander", "", class: "btn btn-danger" %></h5>
+  <hr>
+  <h5><%= link_to "Retour", foodtrucks_path, class: "btn btn-primary" %></h5>
 </div>
