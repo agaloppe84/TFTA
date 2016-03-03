@@ -1,6 +1,7 @@
 class DishesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new]
+  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new, :update]
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  before_action :set_foodtruck, only: [:edit, :new, :create, :update]
 
 
   def index
@@ -8,24 +9,31 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = Dish.find(params[:id])
   end
 
   def new
-    @foodtruck = Foodtruck.find(params[:foodtruck_id])
-    @dish = Dish.new(params[:foodtruck])
+    @dish = Dish.new
+  end
 
-    #@redirect_to
+
+  def create
+    @dish = Dish.new(dish_params)
+    @dish.foodtruck_id = @foodtruck.id
+    if @dish.save
+      redirect_to foodtruck_dishes_path
+    else
+      render :new
+    end
   end
 
   def edit
-    @dish.save
   end
 
   def update
-    @dish = Dish.find(params[:foodtruck_id])
+    @dish = Dish.find(params[:id])
+    @dish.foodtruck = @foodtruck
     if @dish.update(dish_params)
-      redirect_to #dish_path(@dish)
+      redirect_to foodtruck_dish_path
     else
       render :edit
     end
@@ -34,18 +42,21 @@ class DishesController < ApplicationController
 
 
   def destroy
-    @dish = Dish.find(params[:foodtruck_id])
     @dish.destroy
-    redirect_to dishes_path # route a verifier
+    redirect_to foodtruck_dishes_path # route a verifier
   end
 
   private
 
   def set_dish
-    @dish = Dish.find(params[:foodtruck_id])
+    @dish = Dish.find(params[:id])
+  end
+
+  def set_foodtruck
+    @foodtruck = Foodtruck.find(params[:foodtruck_id])
   end
 
   def dish_params
-    params.require(:dish).permit(:name, :description, :price, :picture, :address, :bio, :gluten, :category, :vegetarien)
+    params.require(:dish).permit(:foodtruck_id, :name, :description, :price, :photo, :address, :bio, :gluten, :category, :vegetarien)
   end
 end
