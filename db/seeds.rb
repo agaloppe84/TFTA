@@ -1,5 +1,6 @@
-
+puts "Destroying users"
 User.destroy_all
+puts "Destroying resa"
 Reservation.destroy_all
 OrderLine.destroy_all
 Menu.destroy_all
@@ -31,18 +32,18 @@ puts "END"
 # -------------------------------- Foodtruck --------------------------------- #
 puts "Seeding Foodtruck"
 
-bagin = Foodtruck.create!(sku:"", name:"Bag in", format:"truck", min_capacity:"40", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"bordeaux",category: "entree")
-westcoast = Foodtruck.create!(sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges",category: "plat")
-eltacodeldiablo = Foodtruck.create!(sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris",category: "dessert")
+bagin = Foodtruck.create!(sku:"", name:"Bag in", format:"truck", min_capacity:"40", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"bordeaux")
+westcoast = Foodtruck.create!(sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges")
+eltacodeldiablo = Foodtruck.create!(sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris")
 
 puts "END"
 
 # -------------------------------- Dish --------------------------------- #
 puts "Seeding Dishes"
 
-dishes1 = Dish.create!(foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://")
-dishes2 = Dish.create!(foodtruck: westcoast, name:"bagel", description:"un super bagel" ,price_cents:"650", photo:"http://")
-dishes3 = Dish.create!(foodtruck: eltacodeldiablo, name:"bagel", description:"un super bagel" ,price_cents:"750", photo:"http://")
+dishes1 = Dish.create!(foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://", category: "plat")
+dishes2 = Dish.create!(foodtruck: westcoast, name:"bagel", description:"un super bagel" ,price_cents:"650", photo:"http://", category: "plat")
+dishes3 = Dish.create!(foodtruck: eltacodeldiablo, name:"bagel", description:"un super bagel" ,price_cents:"750", photo:"http://", category: "plat")
 
 puts "END"
 
@@ -77,6 +78,7 @@ puts "Seeding Reservations"
 resa1 = Reservation.create!(foodtruck: bagin, user: michel, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le bagel', mark:'4',payment_cents: '750',address: '30 place de la bourse, bordeaux')
 resa2 = Reservation.create!(foodtruck: bagin, user: albert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le burger', mark:'3',payment_cents: '1000',address: '15 rue amélie, paris')
 resa3 = Reservation.create!(foodtruck: westcoast, user: robert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le tacos', mark:'5',payment_cents: '800',address: '15 cours jean pénicaud, limoges')
+
 puts "END"
 
 # -------------------------------- Order_lines --------------------------------- #

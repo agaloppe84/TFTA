@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
 
-  CATEGORIES = %w(entrée, plat, dessert, accompagnement, boisson)
+  CATEGORIES = %w(entrée plat dessert accompagnement boisson)
 
   belongs_to :foodtruck
   has_many :menu_dishes
@@ -13,7 +13,6 @@ class Dish < ActiveRecord::Base
   validates :price, presence: true
   validates :photo, presence: true
   validates :category, inclusion: { in: CATEGORIES}
-  validates :category, presence: true
 end
 
 

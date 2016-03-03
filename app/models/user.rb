@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :foodtrucks
-  has_many :reservations
+  has_many :menus, dependent: :destroy
+  has_many :reservations, dependent: :destroy
   has_many :order_lines, through: :reservations
 
 

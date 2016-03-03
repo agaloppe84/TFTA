@@ -8,11 +8,11 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = Dish.find(params[:foodtruck_id])
+    @dish = Dish.find(params[:id])
   end
 
   def new
-    @foodtruck = Foodtruck.find(params[:foodtruck_id])
+    @foodtruck = Foodtruck.find(params[:foodtruck])
     @dish = Dish.new(@foodtruck)
     #@redirect_to
   end
@@ -35,11 +35,7 @@ class DishesController < ApplicationController
   def destroy
     @dish = Dish.find(params[:foodtruck_id])
     @dish.destroy
-<<<<<<< 88c4133be50994b7782f9bf32097dc2e36d2de78
     redirect_to dishes_path # route a verifier
-=======
-    redirect_to dishes_path
->>>>>>> controller dishes et views
   end
 
   private
