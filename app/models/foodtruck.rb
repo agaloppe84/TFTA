@@ -4,6 +4,7 @@ class Foodtruck < ActiveRecord::Base
   has_many :dishes
   has_many :menus
   has_many :dishes, through: :menus
+  has_many :dishes, dependent: :destroy
   has_many :reservations
   has_many :order_lines, through: :reservations
 

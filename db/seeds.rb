@@ -1,11 +1,14 @@
-
+puts "Destroying users"
 User.destroy_all
+puts "Destroying resa"
 Reservation.destroy_all
 OrderLine.destroy_all
 Menu.destroy_all
 Foodtruck.destroy_all
 Dish.destroy_all
 CulinaryStyle.destroy_all
+
+
 
 puts "Seed started"
  # -------------------------------- Users consommateurs --------------------------------- #
@@ -38,9 +41,9 @@ puts "END"
 # -------------------------------- Dish --------------------------------- #
 puts "Seeding Dishes"
 
-dishes1 = Dish.create!(foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://", category:"entrée", gluten: false, bio: false, vegetarien: false)
-dishes2 = Dish.create!(foodtruck: westcoast, name:"bagel", description:"un super bagel" ,price_cents:"650", photo:"http://", category:"plat", gluten: false, bio: false, vegetarien: false)
-dishes3 = Dish.create!(foodtruck: eltacodeldiablo, name:"bagel", description:"un super bagel" ,price_cents:"750", photo:"http://", category:"dessert", gluten: false, bio: false, vegetarien: false)
+dishes1 = Dish.create!(foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://", category: "plat")
+dishes2 = Dish.create!(foodtruck: westcoast, name:"bagel", description:"un super bagel" ,price_cents:"650", photo:"http://", category: "plat")
+dishes3 = Dish.create!(foodtruck: eltacodeldiablo, name:"bagel", description:"un super bagel" ,price_cents:"750", photo:"http://", category: "plat")
 
 puts "END"
 
@@ -75,6 +78,7 @@ puts "Seeding Reservations"
 resa1 = Reservation.create!(foodtruck: bagin, user: michel, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le bagel', mark:'4',payment_cents: '750',address: '30 place de la bourse, bordeaux')
 resa2 = Reservation.create!(foodtruck: bagin, user: albert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le burger', mark:'3',payment_cents: '1000',address: '15 rue amélie, paris')
 resa3 = Reservation.create!(foodtruck: westcoast, user: robert, shift_datetime: DateTime.now + rand(2..30), review:'trop bon le tacos', mark:'5',payment_cents: '800',address: '15 cours jean pénicaud, limoges')
+
 puts "END"
 
 # -------------------------------- Order_lines --------------------------------- #

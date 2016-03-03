@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+
   resources :foodtrucks do
-    resources :dishes, only: [:new, :create]
+    resources :dishes, only: [:new, :create, :index]
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

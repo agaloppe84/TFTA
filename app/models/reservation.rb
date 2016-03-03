@@ -1,7 +1,7 @@
 class Reservation < ActiveRecord::Base
   belongs_to :user
   belongs_to :foodtruck
-  has_many :order_lines
+  has_many :order_lines, dependent: :destroy
 
   monetize :payment_cents
 
