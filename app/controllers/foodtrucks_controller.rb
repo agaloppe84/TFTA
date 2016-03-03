@@ -47,10 +47,10 @@ class FoodtrucksController < ApplicationController
     # Will raise ActiveModel::ForbiddenAttributesError
   end
 
-  def destroy
+  #def destroy
     #@foodtruck.destroy
     #redirect_to foodtrucks_path
-  end
+  #end
 
   private
 
