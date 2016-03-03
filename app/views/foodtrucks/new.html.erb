@@ -7,7 +7,7 @@
         <%= f.input :name, label: 'Nom de votre FoodTruck', placeholder: 'Nom de votre FoodTruck' %>
         <%= f.input :address, label: 'Ville de Travail', placeholder: 'Bordeaux' %>
         <%= f.input :format, collection: Foodtruck.format, as: :radio_buttons, checked: Foodtruck.format.first %>
-
+        <%= f.association :culinary_style,label: 'Style Culinaire'%>
         <%= f.input :min_capacity, label: 'capacité minimum', placeholder: '40'%>
         <%= f.input :max_capacity, label: 'capacité maximum', placeholder: '250'%>
         <%= f.input :free_radius_max, label: 'free radius max', placeholder: '30 - nombre de KM de déplacement gratuit'%>
