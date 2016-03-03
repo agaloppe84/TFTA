@@ -1,12 +1,24 @@
 puts "Destroying users"
 User.destroy_all
+puts "END"
 puts "Destroying resa"
 Reservation.destroy_all
+puts "END"
+puts "Destroying order line"
 OrderLine.destroy_all
+puts "END"
+puts "Destroying menu"
 Menu.destroy_all
+puts "END"
+puts "Destroying foodtruck"
 Foodtruck.destroy_all
+puts "END"
+puts "Destroying dish"
 Dish.destroy_all
+puts "END"
+puts "Destroying culinary style"
 CulinaryStyle.destroy_all
+puts "END"
 
 
 
@@ -94,7 +106,68 @@ puts "END"
 # -------------------------------- Culinary_styles --------------------------------- #
 puts "Seeding culinary_styles "
 
-culinary_styles = CulinaryStyle.create!(title:"street food")
+culinary_styles = CulinaryStyle.create!(title:"Occidentale")
+culinary_styles = CulinaryStyle.create!(title:"Française")
+culinary_styles = CulinaryStyle.create!(title:"Orientale")
+culinary_styles = CulinaryStyle.create!(title:"Asiatique")
+culinary_styles = CulinaryStyle.create!(title:"Afro")
+culinary_styles = CulinaryStyle.create!(title:"Latine")
+culinary_styles = CulinaryStyle.create!(title:"Espagnol")
+culinary_styles = CulinaryStyle.create!(title:"Français")
+culinary_styles = CulinaryStyle.create!(title:"Italien")
+culinary_styles = CulinaryStyle.create!(title:"Allemand")
+culinary_styles = CulinaryStyle.create!(title:"Cadadien")
+culinary_styles = CulinaryStyle.create!(title:"Americain")
+culinary_styles = CulinaryStyle.create!(title:"Méditerranéen")
+culinary_styles = CulinaryStyle.create!(title:"Turc")
+culinary_styles = CulinaryStyle.create!(title:"Libanais")
+culinary_styles = CulinaryStyle.create!(title:"Indiens-Pakistanais")
+culinary_styles = CulinaryStyle.create!(title:"Vietnamien")
+culinary_styles = CulinaryStyle.create!(title:"Chinois")
+culinary_styles = CulinaryStyle.create!(title:"Japonnais")
+culinary_styles = CulinaryStyle.create!(title:"Coréen")
+culinary_styles = CulinaryStyle.create!(title:"Créole")
+culinary_styles = CulinaryStyle.create!(title:"Africain")
+culinary_styles = CulinaryStyle.create!(title:"Mexicain")
+culinary_styles = CulinaryStyle.create!(title:"Péruvien")
+culinary_styles = CulinaryStyle.create!(title:"Argentin")
+culinary_styles = CulinaryStyle.create!(title:"Colombien")
+culinary_styles = CulinaryStyle.create!(title:"Vénézuelien")
+culinary_styles = CulinaryStyle.create!(title:"Brésilien")
+culinary_styles = CulinaryStyle.create!(title:"Burger")
+culinary_styles = CulinaryStyle.create!(title:"Bagel")
+culinary_styles = CulinaryStyle.create!(title:"Tapas")
+culinary_styles = CulinaryStyle.create!(title:"Pizza")
+culinary_styles = CulinaryStyle.create!(title:"Sandwich")
+culinary_styles = CulinaryStyle.create!(title:"Hot-dog")
+culinary_styles = CulinaryStyle.create!(title:"Crêpe et galette")
+culinary_styles = CulinaryStyle.create!(title:"Tartine")
+culinary_styles = CulinaryStyle.create!(title:"Salade")
+culinary_styles = CulinaryStyle.create!(title:"Brochette")
+culinary_styles = CulinaryStyle.create!(title:"Kefta")
+culinary_styles = CulinaryStyle.create!(title:"Tajine")
+culinary_styles = CulinaryStyle.create!(title:"Couscous")
+culinary_styles = CulinaryStyle.create!(title:"Wok")
+culinary_styles = CulinaryStyle.create!(title:"Bo-bun")
+culinary_styles = CulinaryStyle.create!(title:"Sushis")
+culinary_styles = CulinaryStyle.create!(title:"Banh_mi")
+culinary_styles = CulinaryStyle.create!(title:"Pad thaï")
+culinary_styles = CulinaryStyle.create!(title:"Carry")
+culinary_styles = CulinaryStyle.create!(title:"BBQ")
+culinary_styles = CulinaryStyle.create!(title:"Tacos")
+culinary_styles = CulinaryStyle.create!(title:"Quesadilias")
+culinary_styles = CulinaryStyle.create!(title:"Burrito")
+culinary_styles = CulinaryStyle.create!(title:"Plats mijotés")
+culinary_styles = CulinaryStyle.create!(title:"Soupe")
+culinary_styles = CulinaryStyle.create!(title:"Glace + Frozen yogurt")
+culinary_styles = CulinaryStyle.create!(title:"Alcool")
+
+V
+
+
+
+
+
 
 puts "END"
 
