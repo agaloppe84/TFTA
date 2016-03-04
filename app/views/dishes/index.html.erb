@@ -1,6 +1,8 @@
 <h1>My dishes</h1>
 <% @dishes.each do |dish| %>
   <li>
-    <%= dish.name %>
+    <%= link_to foodtruck_dish_path(@foodtruck, dish) do %>
+      <%= dish.name %>
+    <% end %>
   </li>
 <% end %>

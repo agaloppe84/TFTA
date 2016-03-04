@@ -20,6 +20,7 @@ puts "Destroying culinary style"
 CulinaryStyle.destroy_all
 puts "END"
 
+
 # -------------------------------- Culinary_styles --------------------------------- #
 puts "Seeding culinary_styles "
 
@@ -107,39 +108,48 @@ bagin = Foodtruck.create!(sku:"", name:"Bag in", format:"truck", min_capacity:"4
 westcoast = Foodtruck.create!(sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges", culinary_style: burger)
 eltacodeldiablo = Foodtruck.create!(sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: bagel)
 
+
+
+
 puts "END"
 
 # -------------------------------- Dish --------------------------------- #
-puts "Seeding Dishes"
+puts "Seeding Dishes"     #["entrée", "plat", "dessert", "accompagnement", "boisson"]:Array
 
-dishes1 = Dish.create!(foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://", category: "plat")
-dishes2 = Dish.create!(foodtruck: westcoast, name:"bagel", description:"un super bagel" ,price_cents:"650", photo:"http://", category: "plat")
-dishes3 = Dish.create!(foodtruck: eltacodeldiablo, name:"bagel", description:"un super bagel" ,price_cents:"750", photo:"http://", category: "plat")
+dish_salade = Dish.create!(foodtruck: bagin, name:"salade", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_coca = Dish.create!(foodtruck: bagin, name:"coca", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_bagel = Dish.create!(foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_popcorn = Dish.create!(foodtruck: westcoast, name:"popcorn", description:"un super bagel" ,price_cents:"650", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_crepe = Dish.create!(foodtruck: westcoast, name:"crépes", description:"un super bagel" ,price_cents:"650", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_burger= Dish.create!(foodtruck: westcoast, name:"burger", description:"un super bagel" ,price_cents:"650", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_donut = Dish.create!(foodtruck: eltacodeldiablo, name:"donut", description:"un super bagel" ,price_cents:"750", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_muffin = Dish.create!(foodtruck: eltacodeldiablo, name:"muffin", description:"un super bagel" ,price_cents:"750", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
+dish_oasis = Dish.create!(foodtruck: eltacodeldiablo, name:"oasis", description:"un super bagel" ,price_cents:"750", photo:"http://") #category: ["entrée", "plat", "dessert", "accompagnement", "boisson"].index("entrée"))
 
 puts "END"
 
 # -------------------------------- Menu --------------------------------- #
 puts "Seeding Menu"
 
-menus1 = Menu.create!(foodtruck: bagin, name:'big bagel', description: "menu bagel complet avec salade", price_cents:'750')
-menus2 = Menu.create!(foodtruck: westcoast, name:'big burger', description: "menu burger complet avec frites", price_cents:'1000')
-menus3 = Menu.create!(foodtruck: eltacodeldiablo, name:'big tacos', description: "menu tacos complet avec accompagnement", price_cents:'800')
-menus4 = Menu.create!(user: michel)
+menus_bagin = Menu.create!(foodtruck: bagin, name:'big bagel', description: "menu bagel complet avec salade", price_cents:'750')
+menus_westcoast = Menu.create!(foodtruck: westcoast, name:'big burger', description: "menu burger complet avec frites", price_cents:'1000')
+menus_eltacodeldiablo = Menu.create!(foodtruck: eltacodeldiablo, name:'big tacos', description: "menu tacos complet avec accompagnement", price_cents:'800')
+
 
 puts "END Seeding Menu"
 
 # -------------------------------- Menu Dishes--------------------------------- #
 puts "Seeding Menu Dishes"
 
-MenuDish.create!(menu: menus1, dish: dishes1)
-MenuDish.create!(menu: menus1, dish: dishes2)
-MenuDish.create!(menu: menus2, dish: dishes2)
-MenuDish.create!(menu: menus2, dish: dishes3)
-MenuDish.create!(menu: menus3, dish: dishes1)
-MenuDish.create!(menu: menus3, dish: dishes3)
-MenuDish.create!(menu: menus4, dish: dishes1)
-MenuDish.create!(menu: menus4, dish: dishes2)
-MenuDish.create!(menu: menus4, dish: dishes3)
+menus_dish_bagin = MenuDish.create!(menu: menus_bagin, dish: dish_salade)
+menus_dish_bagin = MenuDish.create!(menu: menus_bagin, dish: dish_coca)
+menus_dish_bagin = MenuDish.create!(menu: menus_bagin, dish: dish_bagel)
+menus_dish_westcoast = MenuDish.create!(menu: menus_westcoast, dish: dish_popcorn)
+menus_dish_westcoast = MenuDish.create!(menu: menus_westcoast, dish: dish_crepe)
+menus_dish_westcoast = MenuDish.create!(menu: menus_westcoast, dish: dish_burger)
+menus_dish_eltacodeldiablo = MenuDish.create!(menu: menus_eltacodeldiablo, dish: dish_donut)
+menus_dish_eltacodeldiablo = MenuDish.create!(menu: menus_eltacodeldiablo, dish: dish_muffin)
+menus_dish_eltacodeldiablo = MenuDish.create!(menu: menus_eltacodeldiablo, dish: dish_oasis)
 
 puts "END Seeding Menu"
 
@@ -156,8 +166,8 @@ puts "END"
 puts "Seeding Order_lines"
 
 
-panier1 = OrderLine.create!(reservation: resa1, menu: menus1, number_of_meals:"50", menu_price_cents: "750")
-panier2 = OrderLine.create!(reservation: resa2, menu: menus2, number_of_meals:"80", menu_price_cents: "1000")
-panier3 = OrderLine.create!(reservation: resa3, menu: menus3, number_of_meals:"100", menu_price_cents: "800")
+panier1 = OrderLine.create!(reservation: resa1, menu: menus_dish_bagin, number_of_meals:"50", menu_price_cents: "750")
+panier2 = OrderLine.create!(reservation: resa2, menu: menus_dish_bagin, number_of_meals:"80", menu_price_cents: "1000")
+panier3 = OrderLine.create!(reservation: resa3, menu: menus_dish_bagin, number_of_meals:"100", menu_price_cents: "800")
 
 puts "END"
