@@ -13,3 +13,19 @@
   <h5><%= link_to "Retour", foodtrucks_path, class: "btn btn-primary" %></h5>
   <p><%= link_to "Editer", edit_foodtruck_path, class: "btn btn-primary" %></p>
 </div>
+<hr>
+<hr>
+
+<div class="text-center">
+  <% @foodtruck.dishes.each do |dish| %>
+    <li>
+      <%= link_to foodtruck_dish_path(@foodtruck, dish) do %>
+        <%= dish.name %>
+      <% end %>
+    </li>
+  <% end %>
+
+
+  <p><%= link_to "NEW DISH", new_foodtruck_dish_path(@foodtruck), class: "btn btn-primary" %></p>
+
+</div>

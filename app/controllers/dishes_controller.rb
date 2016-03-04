@@ -1,7 +1,7 @@
 class DishesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :create, :new, :update]
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
-  before_action :set_foodtruck, only: [:edit, :new, :create, :update]
+  before_action :set_foodtruck, only: [:index, :edit, :new, :create, :update]
 
 
   def index
