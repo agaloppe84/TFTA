@@ -116,15 +116,15 @@ puts "END"
 # -------------------------------- Dish --------------------------------- #
 puts "Seeding Dishes"
 
-dish_salade = Dish.create!(category: "entrée", foodtruck: bagin, name:"salade", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://")
-dish_coca = Dish.create!(category: "entrée", foodtruck: bagin, name:"coca", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://")
-dish_bagel = Dish.create!(category: "entrée", foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo:"http://")
-dish_popcorn = Dish.create!(category: "entrée", foodtruck: westcoast, name:"popcorn", description:"un super bagel" ,price_cents:"650", photo:"http://")
-dish_crepe = Dish.create!(category: "entrée", foodtruck: westcoast, name:"crépes", description:"un super bagel" ,price_cents:"650", photo:"http://")
-dish_burger= Dish.create!(category: "entrée", foodtruck: westcoast, name:"burger", description:"un super bagel" ,price_cents:"650", photo:"http://")
-dish_donut = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"donut", description:"un super bagel" ,price_cents:"750", photo:"http://")
-dish_muffin = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"muffin", description:"un super bagel" ,price_cents:"750", photo:"http://")
-dish_oasis = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"oasis", description:"un super bagel" ,price_cents:"750", photo:"http://")
+dish_salade = Dish.create!(category: "entrée", foodtruck: bagin, name:"salade", description:"un délicieux bagel au saumon" ,price_cents:"500")
+dish_coca = Dish.create!(category: "entrée", foodtruck: bagin, name:"coca", description:"un délicieux bagel au saumon" ,price_cents:"500")
+dish_bagel = Dish.create!(category: "entrée", foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500")
+dish_popcorn = Dish.create!(category: "entrée", foodtruck: westcoast, name:"popcorn", description:"un super bagel" ,price_cents:"650")
+dish_crepe = Dish.create!(category: "entrée", foodtruck: westcoast, name:"crépes", description:"un super bagel" ,price_cents:"650")
+dish_burger= Dish.create!(category: "entrée", foodtruck: westcoast, name:"burger", description:"un super bagel" ,price_cents:"650")
+dish_donut = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"donut", description:"un super bagel" ,price_cents:"750")
+dish_muffin = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"muffin", description:"un super bagel" ,price_cents:"750")
+dish_oasis = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"oasis", description:"un super bagel" ,price_cents:"750")
 
 puts "END"
 
