@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-sm-6 col-sm-offset-3 col-xs-offset-3">
+      <%= simple_form_for @reservation do |f| %>
+        <%= f.input :shift_datetime, label: 'date de levenement', placeholder: 'date de levenement', as: :datetime %>
+        <%= f.input :payment_cents, label: '€', placeholder: '€' %>
+        <%= f.input :address, label: 'Address', placeholder: 'address' %>
+        <%= f.input :review, label: 'commentaire'%>
+        <%= f.input :mark, label: 'note', placeholder: 'note'%>
+
+
+        <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
