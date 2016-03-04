@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h1>Date de l'event: <%= @reservation.shift_datetime %></h1>
+
+  <p>address: <%= @reservation.address %></p>
+  <p>Date d'acceptation: <%= @reservation.accepted_at %></p>
+  <p>Date de refus: <%= @reservation.refused_at %></p>
+  <p>commentaire: <%= @reservation.review %></p>
+  <p>Note: <%= @reservation.mark %></p>
+  <p>prix: <%= @reservation.payment_cents %></p>
+
+  <h5><%= link_to "Retour", reservations_path, class: "btn btn-primary" %></h5>
+  <p><%= link_to "Editer", edit_reservation_path, class: "btn btn-primary" %></p>
+</div>
+<hr>
