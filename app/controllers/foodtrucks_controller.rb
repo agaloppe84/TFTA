@@ -1,5 +1,6 @@
 class FoodtrucksController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :create]
+  before_action :authenticate_user!, except: [:index, :show]
+  #skip_before_action :authenticate_user!, only: [:index, :show, :create]
   before_action :set_foodtruck, only: [:show, :edit, :update, :destroy]
 
   def index
