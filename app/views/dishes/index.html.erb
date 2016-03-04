@@ -1,11 +1,15 @@
+
+
 <div class="text-center">
   <h1>My dishes</h1>
-  <% @dishes.each do |dish| %>
-    <li>
-      <%= dish.name %><%= link_to "VOIR PLUS", foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
-    </li>
-  <% end %>
+  <ul>
+    <% @dishes.each do |dish| %>
+      <li>
+      <%= dish.name %>
+      <%= link_to "VOIR PLUS", foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
 
-
-
+      </li>
+    <% end %>
+  </ul>
 </div>
+
