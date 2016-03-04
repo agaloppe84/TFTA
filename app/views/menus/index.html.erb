@@ -1,9 +1,12 @@
 <h1>index menu</h1>
 
-<hr>
+
 
 <% @menus.each do |menu| %>
   <div class="text-center">
     <h2>nom: <%= menu.name %></h2>
     <h3>description: <%= menu.description %></h3>
 <% end %>
+
+  <h5><%= link_to "Retour", foodtruck_path(@foodtruck), class: "btn btn-primary" %></h5>
+

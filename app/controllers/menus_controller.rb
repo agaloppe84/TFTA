@@ -5,7 +5,7 @@ class MenusController < ApplicationController
 
 
 
-. def index
+  def index
     @menus = @foodtruck.menus
   end
 
@@ -13,13 +13,14 @@ class MenusController < ApplicationController
   end
 
   def new
-    @menu = Menu.new(:foodtruck_id)
+    @menu = @foodtruck.menus.new
+    @dishes = @foodtruck.dishes
   end
 
   def create
-    @menu = Menu.find(params[:id])
+    @menu = @foodtruck.menus.new(menu_params)
     if @menu.save
-      redirect_to _path
+      redirect_to foodtruck_menus_path
     else
       render :new
     end
@@ -28,7 +29,7 @@ class MenusController < ApplicationController
   def update
     @menu = Menu.update(menu_params)
     if @menu.save
-      redirect_to _path
+      redirect_to foodtruck_dish_menu_path_path
     else
       render :edit
     end

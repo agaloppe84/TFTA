@@ -8,5 +8,8 @@ class Menu < ActiveRecord::Base
   has_attachment :photo
 
   monetize :price_cents
+
+  validates :name, presence: true
+  validates :description, presence: true
 end
 
