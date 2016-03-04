@@ -5,6 +5,8 @@ class Dish < ActiveRecord::Base
   belongs_to :foodtruck
   has_many :menu_dishes
 
+  has_attachment :photo
+
   monetize :price_cents
 
   validates :foodtruck, presence: true

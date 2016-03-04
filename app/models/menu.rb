@@ -5,6 +5,7 @@ class Menu < ActiveRecord::Base
   has_many :menu_dishes, dependent: :destroy
   has_many :dishes, through: :menu_dishes
 
+  has_attachment :photo
 
   monetize :price_cents
 end

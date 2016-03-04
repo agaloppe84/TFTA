@@ -8,6 +8,8 @@ class Foodtruck < ActiveRecord::Base
   has_many :reservations
   has_many :order_lines, through: :reservations
 
+  has_attachment :photo
+
   monetize :km_price_cents
 
   validates :name, presence: true
