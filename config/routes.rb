@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :foodtrucks do
     resources :dishes, only: [:new, :create, :edit, :index, :update, :show]
   end
+  resources :dishes, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
