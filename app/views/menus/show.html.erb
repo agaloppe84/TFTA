@@ -1,16 +1,31 @@
-<div class="text-center">
-  <h1><%= @menu.name %></h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="text-center">
+          <h1><%= @menu.name %></h1>
+          <div class="card">
+            <div class="card-category">menus <%= @foodtruck.name %></div>
+              <div class="card-description">
+                   <p>description: <%= @menu.description %></p>
+                   <p>photo: <%= @menu.photo %></p>
+                   <p>price_cents: <%= @menu.price_cents %></p>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
 
-  <p>description: <%= @menu.description %></p>
+  <p><%= link_to "Editer", edit_foodtruck_menu_path(@menu), class: "btn btn-primary" %></p>
+
+  <h5><%= link_to "menus new", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+
+  <h5><%= link_to "menus show", foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+
+  <h5><%= link_to "menus edit", edit_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+</div>
+
+ <p>description: <%= @menu.description %></p>
   <p>photo: <%= @menu.photo %></p>
   <p>price_cents: <%= @menu.price_cents %></p>
-
-<p><%= link_to "Editer", edit_foodtruck_menu_path(@menu), class: "btn btn-primary" %></p>
-
-<h5><%= link_to "menus new", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
-
-<h5><%= link_to "menus show", foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
-
-<h5><%= link_to "menus edit", edit_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
 
 
