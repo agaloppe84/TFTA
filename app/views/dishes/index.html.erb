@@ -1,4 +1,27 @@
 
+<div class="container text-center padded features">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="text-center">
+        <h1>My dishes</h1>
+        <ul>
+          <% @dishes.each do |dish| %>
+            <li>
+            <%= dish.name %>
+            <%= link_to "VOIR PLUS", foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<%= render "cards" %>
+
+
 
 <div class="text-center">
   <h1>My dishes</h1>
@@ -12,5 +35,4 @@
     <% end %>
   </ul>
 </div>
-
 

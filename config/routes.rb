@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :dishes, only: [:new, :create, :edit, :index, :update, :show]
     resources :menus, only: [:new, :create, :edit, :index, :update, :show]
   end
+  resources :dishes, only: [:index, :show]
 
 
 
