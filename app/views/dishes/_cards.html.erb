@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+  <% @foodtruck.dishes.each do |member| %>
+    <div class="col-xs-8 col-xs-offset-2">
+      <h3><%= member[:name] %></h3>
+      <p><%= member[:culinary_styles] %></p>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+
+
+<div class="container text-center padded features">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <!-- <img src="images/globe.png" alt=""> -->
+      <%= image_tag "images/globe.png", class: "" %>
+      <h2>Discover the foodtrucks</h2>
+      <p>The foodtruck is your new firend.</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+     <%= image_tag "images/dollar.png", class: "" %>
+      <h2>online reservation</h2>
+      <p>No cash issues anymore.</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <%= image_tag "images/beer.png", class: "" %>
+      <h2>Meet crazy food</h2>
+      <p>Discover new culture and lifestyle.</p>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+       <%= image_tag "images/heart.png", class: "" %>
+      <h2>Share and love</h2>
+      <p>Join a community on road.</p>
+    </div>
+  </div>
+</div>
+
+
+
