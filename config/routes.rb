@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :reservations
   resources :foodtrucks do
     resources :dishes, only: [:new, :create, :edit, :index, :update, :show, :destroy]
-    resources :menus, only: [:new, :create, :edit, :index, :update, :show, :destroy]
+    resources :menus, only: [:new, :create, :edit, :index, :update, :show]
   end
-  resources :dishes, only: [:index, :show]
+  resources :dishes, only: [:index, :show, :destroy]
   resources :menus, only: [ :edit, :show, :destroy]
 
 

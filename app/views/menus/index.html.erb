@@ -8,12 +8,8 @@
           <div class="text-center">
             <h2>nom: <%= menu.name %></h2>
             <h3>description: <%= menu.description %></h3>
-            <h5><%= link_to "menu show", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
+            <h5><%= link_to "menu show", menu_path(@foodtruck), class: "btn btn-primary" %></h5>
             <h5><%= link_to "Retour", foodtruck_path(@foodtruck), class: "btn btn-primary" %></h5>
-            <h5><%= link_to "editer", edit_menu_path(@menus), class: "btn btn-primary" %></h5>
-            <h5><%= link_to "Delete", menu_path(@menus),
-                  method: :delete,data: { confirm: "Are you sure?" } %>
-            </h5>
           </div>
         <% end %>
       </div>
