@@ -11,7 +11,6 @@ gem 'redis'
 gem 'money-rails'
 gem 'stripe'
 gem 'coffee-script', '~> 2.4', '>= 2.4.1'
-gem "pundit"
 
 gem 'sass-rails'
 gem 'jquery-rails'

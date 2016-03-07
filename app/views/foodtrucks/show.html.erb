@@ -37,13 +37,13 @@
 
   <div class="text-center">
     <p><%= link_to "NEW DISH", new_foodtruck_dish_path(@foodtruck), class: "btn btn-primary" %></p>
+    <h5><%= link_to "menus", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+    <h5><%= link_to "menus show", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
   </div>
 
 
 
-  <h5><%= link_to "menus", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
 
-  <h5><%= link_to "menus show", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
 
 
 

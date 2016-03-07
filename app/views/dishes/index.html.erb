@@ -1,38 +1,15 @@
-
-<div class="container text-center padded features">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="text-center">
-        <h1>My dishes</h1>
-        <ul>
-          <% @dishes.each do |dish| %>
-            <li>
-            <%= dish.name %>
-            <%= link_to "VOIR PLUS", foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-<%= render "cards" %>
-
-
-
 <div class="text-center">
-  <h1>My dishes</h1>
+  <h1>All the dishes of <%= @foodtruck.name%></h1>
   <ul>
     <% @dishes.each do |dish| %>
       <li>
       <%= dish.name %>
       <%= link_to "VOIR PLUS", foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
-      <h5><%= link_to "menus", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+      <%= link_to "EDITER", edit_foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
+
       </li>
     <% end %>
   </ul>
+  <h5><%= link_to "New Menu", new_foodtruck_dish_path(@foodtruck), class: "btn btn-primary" %></h5>
 </div>
 
