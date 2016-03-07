@@ -11,6 +11,10 @@
             <h3>description: <%= menu.description %></h3>
             <% end %>
             <h5><%= link_to "Retour", foodtruck_path(@foodtruck), class: "btn btn-primary" %></h5>
+            <h5><%= link_to "editer", edit_menu_path(@menus), class: "btn btn-primary" %></h5>
+            <h5><%= link_to "Delete", menu_path(@menus),
+                  method: :delete,data: { confirm: "Are you sure?" } %>
+            </h5>
           </div>
         </div>
     </div>
