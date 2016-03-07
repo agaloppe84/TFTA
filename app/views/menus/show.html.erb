@@ -22,10 +22,17 @@
   <h5><%= link_to "menus index", foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
 
   <h5><%= link_to "menus edit", edit_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+
+  <h5><%= link_to "Delete", menu_path(@menus),method: :delete,data: { confirm: "Are you sure?" } %>
+
+  <h5><%= link_to "editer", edit_menu_path(@menus), class: "btn btn-primary" %></h5>
+
 </div>
+
 
 <p>description: <%= @menu.description %></p>
 <p>photo: <%= @menu.photo %></p>
 <p>price_cents: <%= @menu.price_cents %></p>
+
 
 
