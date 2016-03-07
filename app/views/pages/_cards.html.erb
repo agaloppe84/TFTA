@@ -1,32 +1,20 @@
 <div class="container text-center padded features">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-       <%= link_to foodtrucks_path do %>
-      <%= image_tag "images/globe.png", class: "" %>
-      <h2>Discover the foodtrucks</h2>
-      <p>The foodtruck is your new firend.</p>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-    <%= link_to foodtrucks_path do %>
-     <%= image_tag "images/dollar.png", class: "" %>
-      <h2>online reservation</h2>
-      <p>No cash issues anymore.</p>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= link_to dishes_path do %>
-      <%= image_tag "images/beer.png", class: "" %>
-      <h2>Meet crazy food</h2>
-      <p>Discover new culture and lifestyle.</p>
-      <% end %>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-     <%= link_to foodtrucks_path do %>
-       <%= image_tag "images/heart.png", class: "" %>
-      <h2>Share and love</h2>
-      <p>Join a community on road.</p>
-       <% end %>
+    <% @foodtrucks.each do |foodtruck| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <%= link_to foodtruck_path(foodtruck) do %>
+          <div class="home-card">
+            <% if foodtruck.photo? %>
+              <%= cl_image_tag foodtruck.photo.path, width: 400, height: 300, crop: :fill %>
+            <% end %>
+            <h2><%= foodtruck.name %></h2>
+            <p><%= foodtruck.format %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+
     </div>
   </div>
 </div>
