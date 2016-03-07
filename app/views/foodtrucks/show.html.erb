@@ -21,25 +21,42 @@
 </div>
 
 <hr>
-<hr>
-  <div class="text-center">
-   <h1>My dishes</h1>
-    <ul class="list-unstyled">
-      <% @foodtruck.dishes.each do |dish| %>
-        <li>
-          <%= link_to foodtruck_dish_path(@foodtruck, dish) do %>
-            <%= dish.name %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
 
-  <div class="text-center">
-    <p><%= link_to "NEW DISH", new_foodtruck_dish_path(@foodtruck), class: "btn btn-primary" %></p>
-    <h5><%= link_to "menus", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
-    <h5><%= link_to "menus show", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
-  </div>
+<div class="text-center">
+  <h1>The Menus of <%= @foodtruck.name %></h1>
+
+  <% @foodtruck.menus.each do |menu| %>
+    <li>
+      <%= link_to foodtruck_menu_path(@foodtruck, menu) do %>
+        <%= menu.name %>
+      <% end %>
+    </li>
+  <% end %>
+
+
+
+
+
+  <h5><%= link_to "NEW MENU", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
+  <h5><%= link_to "MENU INDEX", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
+
+</div>
+<hr>
+<div class="text-center">
+  <h1>The Dishes of <%= @foodtruck.name %></h1>
+  <p><%= link_to "NEW DISH", new_foodtruck_dish_path(@foodtruck), class: "btn btn-primary" %></p>
+  <ul class="list-unstyled">
+    <% @foodtruck.dishes.each do |dish| %>
+      <li>
+        <%= link_to foodtruck_dish_path(@foodtruck, dish) do %>
+          <%= dish.name %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+
 
 
 
