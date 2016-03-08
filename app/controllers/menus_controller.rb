@@ -1,5 +1,5 @@
 class MenusController < ApplicationController
-
+  before_action :set_dish, only: [:show, :edit, :update, :destroy]
   before_action :set_foodtruck, except: :destroy
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
@@ -9,6 +9,7 @@ class MenusController < ApplicationController
   end
 
   def show
+    @dishes = @foodtruck.dishes
   end
 
   def new
@@ -48,6 +49,10 @@ class MenusController < ApplicationController
   end
 
    private
+
+   def set_dish
+     @dish = Dish.find(params[:id])
+   end
 
   def set_menu
     @menu = Menu.find(params[:id])

@@ -1,6 +1,6 @@
 <div class="text-center">
   <h1>Editer votre Reservation</h1>
-  <%= render 'formulaire' %>
-  <p><%= link_to "INDEX", reservations_path, class: "btn btn-primary" %></p>
-  <p><%= link_to "SHOW", reservation_path(@reservation), class: "btn btn-primary" %></p>
+  <%= render 'formulaire', foodtruck: @foodtruck %>
+  <p><%= link_to "INDEX", foodtruck_reservations_path, class: "btn btn-primary" %></p>
+  <p><%= link_to "SHOW", foodtruck_reservation_path(@foodtruck, @reservation), class: "btn btn-primary" %></p>
 </div>
