@@ -1,14 +1,11 @@
 class Foodtruck < ActiveRecord::Base
   belongs_to :user
   belongs_to :culinary_style
-  has_many :dishes
-  has_many :menus
-  has_many :dishes, through: :menus
   has_many :dishes, dependent: :destroy
-  has_many :reservations
-  has_many :order_lines, through: :reservations
+  has_many :menus, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 
-  has_attachment :photo
+  has_attachments :photos
 
   monetize :km_price_cents
 
@@ -18,8 +15,11 @@ class Foodtruck < ActiveRecord::Base
   validates :max_capacity, presence: true
   validates :free_radius_max, presence: true
   validates :radius_max, presence: true
-  validates :km_price_cents, presence: true # à revoir : n'apparait pas dans les messages d'erreur de la validation
+  validates :km_price, presence: true
   validates :address, presence: true
+
+  validates_associated :user
+  validates_associated :culinary_style
 
   def self.format
     ["Food-Truck", "Food-Bike", "Stand-Mobile"]

@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
 
-  CATEGORIES = %w(entrée plat dessert accompagnement boisson)
+  CATEGORIES =
 
   belongs_to :foodtruck
   has_many :menu_dishes
@@ -9,12 +9,17 @@ class Dish < ActiveRecord::Base
 
   monetize :price_cents
 
-  validates :foodtruck, presence: true
+  def self.categories
+    %w(entrée plat dessert accompagnement boisson)
+  end
+
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  #validates :photo, presence: true
-  validates :category, inclusion: { in: CATEGORIES}
+  validates :category, inclusion: { in: Dish.categories }
+
+  validates_associated :foodtruck
+
 end
 
 

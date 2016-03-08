@@ -1,10 +1,7 @@
 class MenusController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: [:index, :show, :create, :new, :update]
-  before_action :set_foodtruck, only: [:index, :edit, :new, :create, :update, :destroy, :show]
-  before_action :set_menu, only: [:index, :edit, :new, :create, :update, :destroy, :show]
-
-
+  before_action :set_foodtruck, except: :destroy
+  before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -15,7 +12,7 @@ class MenusController < ApplicationController
   end
 
   def new
-    @menu = @foodtruck.menus.new
+    @menu = Menu.new
     @dishes = @foodtruck.dishes
   end
 

@@ -5,10 +5,10 @@ class Reservation < ActiveRecord::Base
 
   monetize :payment_cents
 
-  validates :shift_datetime, presence: true
-  validates :review, presence: true
-  validates :mark, presence: true
-  validates :payment, presence: true
-  validates :address, presence: true
+  validates :shift_datetime, presence: true, on: :update
+  validates :address, presence: true, on: :update
+
+  validates_associated :user
+  validates_associated :foodtruck
 
 end
