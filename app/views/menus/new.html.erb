@@ -4,3 +4,21 @@
 <%= render 'form' %>
 
 <h5><%= link_to "Retour", foodtruck_path(@foodtruck), class: "btn btn-primary" %></h5>
+
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <% @dishes.each do |dish| %>
+      <div class="col-sm-3">
+        <% if dish.photo? %>
+          <%= cl_image_tag dish.photo.path, width: 300, height: 200, crop: :fill %>
+        <% end %>
+        <%= dish.name %>
+        <%= dish.description %>
+        <%= dish.price %>
+      </div>
+    <% end %>
+  </div>
+</div>

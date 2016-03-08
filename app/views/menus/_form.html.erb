@@ -4,8 +4,7 @@
       <%= simple_form_for [ @foodtruck, @menu] do |f| %>
         <%= f.input :name, label: 'menu title', placeholder: 'choose you meal'  %>
         <%= f.input :description %>
-        <%= f.association :dishes, as: :check_boxes %>
-        <%= f.input :price_cents, label: 'Your price'%>
+        <%= f.association :dishes, collection: @dishes, as: :check_boxes %>
         <%= f.input :photo, as: :attachinary %>
         <%= f.button :submit %>
       <% end %>
