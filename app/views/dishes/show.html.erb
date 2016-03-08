@@ -1,5 +1,8 @@
 <div class="text-center">
-  <h1>My <%= @dish.name %> dish</h1>
+  <h1>Dish <%= @dish.name %> dish</h1>
+  <% if @dish.photo? %>
+    <%= cl_image_tag @dish.photo.path, width: 300, height: 200, crop: :fill %>
+  <% end %>
   <p>Description: <%= @dish.description %></p>
   <p>Category: <%= @dish.category %></p>
   <p>Price: <%= @dish.price %></p>

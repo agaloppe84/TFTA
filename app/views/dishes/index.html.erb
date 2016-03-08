@@ -3,6 +3,9 @@
   <ul>
     <% @dishes.each do |dish| %>
       <li>
+       <% if dish.photo? %>
+          <%= cl_image_tag dish.photo.path, width: 300, height: 200, crop: :fill %>
+        <% end %>
       <%= dish.name %>
       <%= link_to "VOIR PLUS", foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
       <%= link_to "EDITER", edit_foodtruck_dish_path(@foodtruck, dish), class: "btn btn-primary" %>
