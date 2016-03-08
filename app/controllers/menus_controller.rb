@@ -40,7 +40,11 @@ class MenusController < ApplicationController
 
   def destroy
      @menu = Menu.find(params[:id])
-     @menu.destroy
+     if @menu.destroy
+      redirect_to foodtruck_menus_path
+     else
+      render :show
+     end
   end
 
    private

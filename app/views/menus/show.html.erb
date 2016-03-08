@@ -2,15 +2,16 @@
   <h1><%= @menu.name %></h1>
   menus <%= @foodtruck.name %>
   <p>description: <%= @menu.description %></p>
-  <p>photo: <%= cl_image_tag @menu.photo.path %></p>
+  <p>photo: <% if @foodtruck.photos? %>
+      <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
+    <% end %></p>
   <p>price_cents: <%= @menu.price_cents %></p>
   <hr>
-  <p><%= link_to "Editer", edit_foodtruck_menu_path(@foodtruck, @menu), class: "btn btn-primary" %></p>
   <h5><%= link_to "menus new", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
-  <h5><%= link_to "menus index", foodtruck_menu_path(@foodtruck, @menu), class: "btn btn-primary" %></h5>
   <h5><%= link_to "menus edit", edit_foodtruck_menu_path(@foodtruck, @menu), class: "btn btn-primary" %></h5>
   <h5><%= link_to "Delete", menu_path(@menu),method: :delete,data: { confirm: "Are you sure?" } %>
-  <h5><%= link_to "editer", edit_menu_path(@menu), class: "btn btn-primary" %></h5>
+  <h5><%= link_to "menus index", foodtruck_menus_path(@foodtruck, @menu), class: "btn btn-primary" %></h5>
+
 </div>
 
 
