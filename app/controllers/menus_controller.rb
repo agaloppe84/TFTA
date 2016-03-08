@@ -41,7 +41,7 @@ class MenusController < ApplicationController
   def destroy
      @menu = Menu.find(params[:id])
      if @menu.destroy
-      redirect_to foodtruck_menus_path
+      redirect_to foodtruck_menus_path(@menu.foodtruck)
      else
       render :show
      end
