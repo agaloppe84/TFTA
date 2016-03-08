@@ -1,6 +1,3 @@
-puts "Destroying users"
-User.destroy_all
-puts "END"
 puts "Destroying resa"
 Reservation.destroy_all
 puts "END"
@@ -18,6 +15,9 @@ Dish.destroy_all
 puts "END"
 puts "Destroying culinary style"
 CulinaryStyle.destroy_all
+puts "END"
+puts "Destroying users"
+User.destroy_all
 puts "END"
 
 
