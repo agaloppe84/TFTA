@@ -3,14 +3,22 @@
   menus <%= @foodtruck.name %>
   <p>description: <%= @menu.description %></p>
   <p>photo: <% if @foodtruck.photos? %>
-      <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
+    <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
     <% end %></p>
   <p>price_cents: <%= @menu.price_cents %></p>
+
+    <%= simple_form_for [ @foodtruck, @dishes] do |f| %>
+    <p>select you menus: <%=  f.select collection: @menus, as: :check_boxes, :include_blank => false %></p>
+    <%= f.button :submit %>
+      <% end %>
+
+
   <hr>
   <h5><%= link_to "menus new", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
   <h5><%= link_to "menus edit", edit_foodtruck_menu_path(@foodtruck, @menu), class: "btn btn-primary" %></h5>
   <h5><%= link_to "Delete", menu_path(@menu),method: :delete,data: { confirm: "Are you sure?" } %>
   <h5><%= link_to "menus index", foodtruck_menus_path(@foodtruck, @menu), class: "btn btn-primary" %></h5>
+
 
 </div>
 
