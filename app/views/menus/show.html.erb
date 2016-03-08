@@ -7,11 +7,6 @@
     <% end %></p>
   <p>price_cents: <%= @menu.price_cents %></p>
 
-    <%= simple_form_for [ @foodtruck, @dishes] do |f| %>
-    <p>select you menus: <%=  f.select collection: @menus, as: :check_boxes, :include_blank => false %></p>
-    <%= f.button :submit %>
-      <% end %>
-
 
   <hr>
   <h5><%= link_to "menus new", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>

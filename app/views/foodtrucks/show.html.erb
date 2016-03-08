@@ -39,7 +39,6 @@
 
   <h5><%= link_to "NEW MENU", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
   <h5><%= link_to "MENU INDEX", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
-
 </div>
 <hr>
 <div class="text-center">
@@ -54,6 +53,19 @@
       </li>
     <% end %>
   </ul>
+
+
+  <div class="row">
+    <div class="col-sm-10 col-sm-1">
+      <%= simple_form_for [@foodtruck, @reservation] do |f| %>
+      <%= f.input :shift_datetime %>
+      <%= f.input :address %>
+      <%= f.button :submit %>
+      <% end %>
+    </div>
+  </div>
+
+
 </div>
 
 

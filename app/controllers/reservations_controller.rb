@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_foodtruck, only: [:show, :new, :create, :edit, :update]
 
   def index
     @reservations = Reservation.all
@@ -14,24 +15,25 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
   end
 
-  def edit
-    @reservation.save
-  end
-
   def create
     @reservation = Reservation.new(reservation_params)
     @reservation.user = current_user
+    @reservation.foodtruck = @foodtruck
     if @reservation.save
-      redirect_to reservation_path(@reservation)
+      redirect_to foodtruck_reservation_path(@foodtruck, @reservation)
     else
       Rails.logger.info(@reservation.errors.full_messages)
       render :new
     end
   end
 
+  def edit
+    @reservation.save
+  end
+
   def update
     if @reservation.update(reservation_params)
-      redirect_to reservation_path(@reservation)
+      redirect_to foodtruck_reservation_path(@foodtruck, @reservation)
     else
       render :edit
     end
@@ -46,6 +48,10 @@ class ReservationsController < ApplicationController
 
   def set_reservation
     @reservation = Reservation.find(params[:id])
+  end
+
+  def set_foodtruck
+    @foodtruck = Foodtruck.find(params[:foodtruck_id])
   end
 
   def reservation_params
