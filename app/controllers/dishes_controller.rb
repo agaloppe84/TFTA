@@ -34,13 +34,12 @@ class DishesController < ApplicationController
     else
       render :edit
     end
-    # Will raise ActiveModel::ForbiddenAttributesError
   end
 
 
   def destroy
     @dish.destroy
-    redirect_to foodtruck_dishes_path # route a verifier
+    redirect_to dish_path
   end
 
   private
