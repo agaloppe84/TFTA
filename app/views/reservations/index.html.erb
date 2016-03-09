@@ -2,14 +2,13 @@
   <h1>index des reservations</h1>
 
   <hr>
-  <p><%= link_to "Nouvelle reservation", new_reservation_path(@reservation), class: "btn btn-primary" %></p>
   <hr>
 
   <% @reservations.each do |reservation| %>
     <h2>date: <%= reservation.shift_datetime %></h2>
     <h3>prix: <%= reservation.payment_cents %></h3>
     <h3>address: <%= reservation.address %></h3>
-    <h5><%= link_to "VOIR PLUS", reservation_path(reservation), class: "btn btn-primary" %></h5>
+
     <hr>
   <% end %>
 </div>
