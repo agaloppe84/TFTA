@@ -34,10 +34,11 @@ class ReservationsController < ApplicationController
     update_params = reservation_params.merge({status: :booked})
     if @reservation.update(update_params)
       flash[:notice] = "Votre réservation est validée"
+      redirect_to profil_path
     else
-      flash[:notice] = "ERREUR"
+      flash[:notice] = "errors"
     end
-    redirect_to root_path
+
   end
 
   def destroy
