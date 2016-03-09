@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
 
-  categories =
+  CATEGORIES = %w(entrée plat dessert accompagnement boisson)
 
   belongs_to :foodtruck
   has_many :menu_dishes
