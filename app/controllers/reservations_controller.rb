@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
-  before_action :set_foodtruck, only: [:show, :new, :create, :edit, :update]
+  before_action :set_foodtruck, only: [:show, :new, :create]
 
   def index
     @reservations = Reservation.all
@@ -28,15 +28,16 @@ class ReservationsController < ApplicationController
   end
 
   def edit
-    @reservation.save
   end
 
   def update
-    if @reservation.update(reservation_params)
-      redirect_to foodtruck_reservation_path(@foodtruck, @reservation)
+    update_params = reservation_params.merge({status: :booked})
+    if @reservation.update(update_params)
+      flash[:notice] = "Votre réservation est validée"
     else
-      render :edit
+      flash[:notice] = "ERREUR"
     end
+    redirect_to root_path
   end
 
   def destroy

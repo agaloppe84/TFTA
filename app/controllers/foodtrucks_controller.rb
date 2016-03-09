@@ -8,7 +8,14 @@ class FoodtrucksController < ApplicationController
   end
 
   def show
-   @reservation = Reservation.new
+    pending_reservation = Reservation.pending_for_user_on_foodtruck(current_user, @foodtruck).last
+    if pending_reservation
+      @reservation = pending_reservation
+    else
+      @reservation = Reservation.create(user: current_user, foodtruck: @foodtruck)
+    end
+    @menus = @foodtruck.menus
+    @order_line = OrderLine.new
   end
 
   def new
