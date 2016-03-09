@@ -1,6 +1,6 @@
 class Dish < ActiveRecord::Base
 
-  CATEGORIES =
+  categories =
 
   belongs_to :foodtruck
   has_many :menu_dishes
