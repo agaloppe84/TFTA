@@ -1,0 +1,17 @@
+<!-- -->
+<h1>Mon profil Food truck</h1>
+<% current_user.foodtrucks.each do |foodtruck| %>
+  <%= foodtruck.name %>
+  <p><%= link_to "Editer", edit_foodtruck_path(foodtruck), class: "btn btn-primary" %></p>
+<% end %>
+<hr>
+<h2>Mes réservations</h2>
+
+<ul>
+  <% current_user.reservations.each do |reservation| %>
+    <li>
+      Address : <%= reservation.address %>
+      Date : <%= reservation.shift_datetime %>
+    </li>
+  <% end %>
+</ul>
