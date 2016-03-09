@@ -7,6 +7,16 @@
     <% end %></p>
   <p>price_cents: <%= @menu.price_cents %></p>
 
+    <div class="text-center">
+      <div class="row">
+        <% @foodtruck.dishes.each do |member| %>
+            <h3><%= member[:name] %></h3>
+            <p><%= member[:culinary_styles] %></p>
+            <p><%=cl_image_tag member.photo, width: 200, height: 150, crop: :fill %></p>
+            <% end %>
+        </div>
+    </div>
+
 
   <hr>
   <h5><%= link_to "menus new", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
