@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  def foodtrucker?
+    foodtrucks.any?
+  end
+
 end
