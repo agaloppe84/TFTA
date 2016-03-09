@@ -116,15 +116,15 @@ puts "END"
 # -------------------------------- Dish --------------------------------- #
 puts "Seeding Dishes"
 
-dish_salade = Dish.create!(category: "entrée", foodtruck: bagin, name:"salade", description:"un délicieux bagel au saumon" ,price_cents:"500")
-dish_coca = Dish.create!(category: "entrée", foodtruck: bagin, name:"coca", description:"un délicieux bagel au saumon" ,price_cents:"500")
-dish_bagel = Dish.create!(category: "entrée", foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500")
-dish_popcorn = Dish.create!(category: "entrée", foodtruck: westcoast, name:"popcorn", description:"un super bagel" ,price_cents:"650")
-dish_crepe = Dish.create!(category: "entrée", foodtruck: westcoast, name:"crépes", description:"un super bagel" ,price_cents:"650")
-dish_burger= Dish.create!(category: "entrée", foodtruck: westcoast, name:"burger", description:"un super bagel" ,price_cents:"650")
-dish_donut = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"donut", description:"un super bagel" ,price_cents:"750")
-dish_muffin = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"muffin", description:"un super bagel" ,price_cents:"750")
-dish_oasis = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"oasis", description:"un super bagel" ,price_cents:"750")
+dish_salade = Dish.create!(category: "entrée", foodtruck: bagin, name:"salade", description:"un délicieux bagel au saumon" ,price_cents:"500", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_coca = Dish.create!(category: "entrée", foodtruck: bagin, name:"coca", description:"un délicieux bagel au saumon" ,price_cents:"500", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_bagel = Dish.create!(category: "entrée", foodtruck: bagin, name:"bagel au saumon", description:"un délicieux bagel au saumon" ,price_cents:"500", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_popcorn = Dish.create!(category: "entrée", foodtruck: westcoast, name:"popcorn", description:"un super bagel" ,price_cents:"650", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_crepe = Dish.create!(category: "entrée", foodtruck: westcoast, name:"crépes", description:"un super bagel" ,price_cents:"650", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_burger= Dish.create!(category: "entrée", foodtruck: westcoast, name:"burger", description:"un super bagel" ,price_cents:"650", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_donut = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"donut", description:"un super bagel" ,price_cents:"750", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_muffin = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"muffin", description:"un super bagel" ,price_cents:"750", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+dish_oasis = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"oasis", description:"un super bagel" ,price_cents:"750", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
 
 puts "END"
 
@@ -171,3 +171,4 @@ panier2 = OrderLine.create!(reservation: resa2, menu: menus_bagin, number_of_mea
 panier3 = OrderLine.create!(reservation: resa3, menu: menus_bagin, number_of_meals:"100", menu_price_cents: "800")
 
 puts "END"
+
