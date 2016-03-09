@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308180905) do
+ActiveRecord::Schema.define(version: 20160309140843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,15 +112,16 @@ ActiveRecord::Schema.define(version: 20160308180905) do
   create_table "reservations", force: :cascade do |t|
     t.string   "review"
     t.integer  "mark"
-    t.integer  "payment_cents",  default: 0, null: false
+    t.integer  "payment_cents",  default: 0,         null: false
     t.string   "address"
     t.string   "accepted_at"
     t.string   "refused_at"
     t.integer  "user_id"
     t.integer  "foodtruck_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.datetime "shift_datetime"
+    t.string   "status",         default: "pending"
   end
 
   add_index "reservations", ["foodtruck_id"], name: "index_reservations_on_foodtruck_id", using: :btree

@@ -5,7 +5,7 @@ class OrderLine < ActiveRecord::Base
   monetize :menu_price_cents
 
   validates_associated :menu
-  validates_associated :reservation
 
+  validates :reservation, presence: true
   validates :number_of_meals, presence: true
 end

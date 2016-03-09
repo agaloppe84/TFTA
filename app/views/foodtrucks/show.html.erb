@@ -1,78 +1,54 @@
-<div class="text-center">
-  <h1><%= @foodtruck.name %></h1>
+<div class="container">
+  <div class="text-center">
+    <h1><%= @foodtruck.name %></h1>
 
-  <p>
-    <% if @foodtruck.photos? %>
-      <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
-    <% end %>
-  </p>
-
-  <p>address: <%= @foodtruck.address %></p>
-  <p>Style culinaire: <%= @foodtruck.culinary_style.title %></p>
-  <p>minimum de repas: <%= @foodtruck.min_capacity %></p>
-  <p>maximum de repas: <%= @foodtruck.max_capacity %></p>
-  <p>max KM gratuits<%= @foodtruck.free_radius_max %></p>
-  <p>max Km déplacement<%= @foodtruck.radius_max %></p>
-  <p>prix du KM: <%= @foodtruck.km_price %></p>
-  <h5><%= link_to "Commander", "", class: "btn btn-danger" %></h5>
-  <hr>
-  <h5><%= link_to "Retour", foodtrucks_path, class: "btn btn-primary" %></h5>
-  <p><%= link_to "Editer", edit_foodtruck_path, class: "btn btn-primary" %></p>
-</div>
-
-<hr>
-
-<div class="text-center">
-  <h1>The Menus of <%= @foodtruck.name %></h1>
-
-  <% @foodtruck.menus.each do |menu| %>
-    <li>
-      <%= link_to foodtruck_menu_path(@foodtruck, menu) do %>
-        <%= menu.name %>
+    <p>
+      <% if @foodtruck.photos? %>
+        <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
       <% end %>
-    </li>
-  <% end %>
+    </p>
 
+    <p>address: <%= @foodtruck.address %></p>
+    <p>Style culinaire: <%= @foodtruck.culinary_style.title %></p>
+    <p>minimum de repas: <%= @foodtruck.min_capacity %></p>
+    <p>maximum de repas: <%= @foodtruck.max_capacity %></p>
+    <p>max KM gratuits<%= @foodtruck.free_radius_max %></p>
+    <p>max Km déplacement<%= @foodtruck.radius_max %></p>
+    <p>prix du KM: <%= @foodtruck.km_price %></p>
+    <h5><%= link_to "Commander", "", class: "btn btn-danger" %></h5>
+    <hr>
+    <h5><%= link_to "Retour", foodtrucks_path, class: "btn btn-primary" %></h5>
+    <p><%= link_to "Editer", edit_foodtruck_path, class: "btn btn-primary" %></p>
+  </div>
 
+  <hr>
 
+  <div class="text-center">
+    <h1>The Menus of <%= @foodtruck.name %></h1>
 
-
-  <h5><%= link_to "NEW MENU", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
-  <h5><%= link_to "MENU INDEX", foodtruck_menus_path(@foodtruck), class: "btn btn-primary" %></h5>
-</div>
-<hr>
-<div class="text-center">
-  <h1>The Dishes of <%= @foodtruck.name %></h1>
-  <p><%= link_to "NEW DISH", new_foodtruck_dish_path(@foodtruck), class: "btn btn-primary" %></p>
-  <ul class="list-unstyled">
-    <% @foodtruck.dishes.each do |dish| %>
+    <% @menus.each do |menu| %>
       <li>
-        <%= link_to foodtruck_dish_path(@foodtruck, dish) do %>
-          <%= dish.name %>
+        <%= link_to menu.name, foodtruck_menu_path(@foodtruck, menu) %>
+        <%= simple_form_for @order_line do |f| %>
+          <%= f.input :number_of_meals   %>
+          <%= f.input :menu_id, as: :hidden, input_html: { value: menu.id } %>
+          <%= f.input :reservation_id, as: :hidden, input_html: { value: @reservation.id } %>
+          <%= f.submit "Ajouter au panier" %>
         <% end %>
       </li>
     <% end %>
-  </ul>
 
+    <br>
+    <br>
+    COMMANDER
 
-  <div class="row">
-    <div class="col-sm-10 col-sm-1">
-      <%= simple_form_for [@foodtruck, @reservation] do |f| %>
+    <%= simple_form_for @reservation do |f| %>
       <%= f.input :shift_datetime %>
       <%= f.input :address %>
-      <%= f.button :submit %>
-      <% end %>
-    </div>
+      <%= f.button :submit, "Valider ma reservation" %>
+    <% end %>
+
+
+    <h5><%= link_to "NEW MENU", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
   </div>
-
-
 </div>
-
-
-
-
-
-
-
-
-

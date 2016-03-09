@@ -6,10 +6,14 @@ Rails.application.routes.draw do
 
 
   resources :foodtrucks, except: :destroy do
-    resources :reservations, only: [:index, :show, :create, :edit]
+    resources :reservations, only: [:index, :show, :create]
     resources :dishes, except: :destroy
     resources :menus, except: :destroy
   end
+
+  resources :order_lines, only: [:create]
+  resources :reservations, only: [:update]
+
   resources :dishes, only: [:destroy]
   resources :menus, only: [:destroy]
 
