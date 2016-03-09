@@ -11,6 +11,8 @@
   <% current_user.reservations.each do |reservation| %>
     <li>
       Address : <%= reservation.address %>
+    </li>
+    <li>
       Date : <%= reservation.shift_datetime %>
     </li>
   <% end %>
