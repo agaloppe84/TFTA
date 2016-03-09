@@ -36,7 +36,8 @@ class MenusController < ApplicationController
   end
 
   def edit
-     @menu = Menu.find(params[:id])
+    @menu = Menu.find(params[:id])
+    @dishes = @menu.dishes
   end
 
   def destroy
