@@ -1,16 +1,21 @@
+
+
+
 <div class="container text-center">
   <h1>index food truck</h1>
   <hr>
-  <div class="row">
-    <% @foodtrucks.each do |foodtruck| %>
-      <div class="col-sm-6">
-        <% if foodtruck.photos.any? %>
-          <%= cl_image_tag foodtruck.photos.first.path, width: 300, height: 200, crop: :fill %>
-        <% end %>
-        <h2>nom: <%= foodtruck.name %></h2>
-        <h3>Style Culinaire: <%= foodtruck.culinary_style.title %></h3>
-        <h5><%= link_to "VOIR PLUS", foodtruck_path(foodtruck), class: "btn btn-primary" %></h5>
-      </div>
-    <% end %>
+  <div class="wrapper">
+    <div class="row">
+      <% @foodtrucks.each do |foodtruck| %>
+        <div class="col-sm-6">
+          <% if foodtruck.photos.any? %>
+            <%= cl_image_tag foodtruck.photos.first.path, width: 300, height: 200, crop: :fill %>
+          <% end %>
+          <h2>nom: <%= foodtruck.name %></h2>
+          <h3>Style Culinaire: <%= foodtruck.culinary_style.title %></h3>
+          <h5><%= link_to "VOIR PLUS", foodtruck_path(foodtruck), class: "btn btn-primary" %></h5>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
