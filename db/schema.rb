@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310091948) do
+ActiveRecord::Schema.define(version: 20160310164402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,14 +115,15 @@ ActiveRecord::Schema.define(version: 20160310091948) do
     t.integer  "mark"
     t.integer  "payment_cents",  default: 0,         null: false
     t.string   "address"
-    t.string   "accepted_at"
-    t.string   "refused_at"
     t.integer  "user_id"
     t.integer  "foodtruck_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.datetime "shift_datetime"
     t.string   "status",         default: "pending"
+    t.json     "payment"
+    t.datetime "accepted_at"
+    t.datetime "refused_at"
   end
 
   add_index "reservations", ["foodtruck_id"], name: "index_reservations_on_foodtruck_id", using: :btree
@@ -151,6 +152,7 @@ ActiveRecord::Schema.define(version: 20160310091948) do
     t.string   "picture"
     t.string   "token"
     t.datetime "token_expiry"
+    t.string   "stripe_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

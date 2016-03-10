@@ -3,17 +3,22 @@
 <% current_user.foodtrucks.each do |foodtruck| %>
   <%= foodtruck.name %>
   <p><%= link_to "Editer", edit_foodtruck_path(foodtruck), class: "btn btn-primary" %></p>
+  <ul>
+    <% foodtruck.reservations.each do |reservation| %>
+      <li>
+        <p>Address : <%= reservation.address %></p>
+        <p>Date : <%= reservation.shift_datetime %></p>
+        <p>prix: <%= humanized_money_with_symbol reservation.total_price %></p>
+        <% if reservation.pending? %>
+          <%= link_to "Accept", accept_reservation_path(reservation), method: :post, class: "btn btn-success" %>
+          <%= link_to "Refuse", refuse_reservation_path(reservation), method: :post, class: "btn btn-danger" %>
+        <% else %>
+          <%= "Accepté le #{l reservation.accepted_at}" if reservation.accepted_at %>
+          <%= "Refusé le #{l reservation.refused_at}" if reservation.refused_at %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <hr>
 <% end %>
-<hr>
-<h2>Mes réservations</h2>
 
-<ul>
-  <% current_user.reservations.each do |reservation| %>
-    <li>
-      Address : <%= reservation.address %>
-    </li>
-    <li>
-      Date : <%= reservation.shift_datetime %>
-    </li>
-  <% end %>
-</ul>

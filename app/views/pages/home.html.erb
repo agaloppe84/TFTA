@@ -10,6 +10,14 @@
   <h1 class="text-center">FOOD TRUCKS</h1>
 </div>
 
-<%= render "cards" %>
+<div class="container text-center padded features">
+  <div class="row">
+    <% @foodtrucks.each do |foodtruck| %>
+      <%= render "foodtrucks/card", foodtruck: foodtruck %>
+    <% end %>
+    </div>
+  </div>
+</div>
+
 
 

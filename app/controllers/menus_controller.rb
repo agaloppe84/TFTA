@@ -20,7 +20,7 @@ class MenusController < ApplicationController
   def create
     @menu = @foodtruck.menus.new(menu_params)
     if @menu.save
-      redirect_to foodtruck_menus_path
+      redirect_to @foodtruck
     else
       render :new
     end
