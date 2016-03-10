@@ -122,9 +122,22 @@ dish_bagel = Dish.create!(category: "entrée", foodtruck: bagin, name:"bagel au 
 dish_popcorn = Dish.create!(category: "entrée", foodtruck: westcoast, name:"popcorn", description:"un super bagel" ,price_cents:"650", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
 dish_crepe = Dish.create!(category: "entrée", foodtruck: westcoast, name:"crépes", description:"un super bagel" ,price_cents:"650", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
 dish_burger= Dish.create!(category: "entrée", foodtruck: westcoast, name:"burger", description:"un super bagel" ,price_cents:"650", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
-dish_donut = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"donut", description:"un super bagel" ,price_cents:"750", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
-dish_muffin = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"muffin", description:"un super bagel" ,price_cents:"750", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
-dish_oasis = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"oasis", description:"un super bagel" ,price_cents:"750", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+
+dish_tacos = Dish.create!(category: "plat", foodtruck: eltacodeldiablo, name:"Tacos mexicanos", description:"un super bagel" ,price_cents:"750", photo_url: "http://static.fr.groupon-content.net/45/13/1400675201345.jpg")
+dish_tacos1 = Dish.create!(category: "plat", foodtruck: eltacodeldiablo, name:"Tacos ", description:"un super bagel" ,price_cents:"650", photo_url: "http://monipag.com/benjamin-chelly/wp-content/uploads/sites/951/1317895826632.jpg")
+dish_tacos2 = Dish.create!(category: "plat", foodtruck: eltacodeldiablo, name:"Tacos ", description:"un super bagel" ,price_cents:"850", photo_url: "http://www.voyagemexico.com/wp-content/uploads/2013/09/Tacos-Al-Pastor.jpg")
+dish_tacos3 = Dish.create!(category: "plat", foodtruck: eltacodeldiablo, name:"Tacos ", description:"un délicieux bagel au saumon" ,price_cents:"500", photo_url: "http://images.marmitoncdn.org/recipephotos/multiphoto/50/5059a6c5-e976-4999-8496-d6716f580fe3_normal.jpg")
+dish_tacos4 = Dish.create!(category: "plat", foodtruck: eltacodeldiablo, name:"Tacos ", description:"un délicieux bagel au saumon" ,price_cents:"600", photo_url: "https://www.plaisirslaitiers.ca/var/ezflow_site/storage/images/dairy-goodness/home/recipes/sizzling-mexican-fajitas/258709-2-eng-CA/sizzling-mexican-fajitas_large.jpg")
+dish_tacos5 = Dish.create!(category: "plat", foodtruck: eltacodeldiablo, name:"Tacos ", description:"un délicieux bagel au saumon" ,price_cents:"700", photo_url: "http://p9.storage.canalblog.com/97/43/121291/35771674_p.jpg")
+
+dish_entree1 = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"Tomates farcies", description:"Tomates farcies à la mexicaine pour une entrée fraîche" ,price_cents:"300", photo_url: "http://www.cookismo.fr/wp-content/uploads/2012/09/tomates_farcies_guacamole_crevettes440%C2%A9christelle-vogel_cookismo.jpg")
+dish_entree2 = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"Salade mexicaine", description:"Salade mexicaine en fleurs de tortillas" ,price_cents:"250", photo_url: "http://www.moietcie.ca/sites/default/files/salade_a_la_mexicaine_vol5.jpg")
+dish_entree3 = Dish.create!(category: "entrée", foodtruck: eltacodeldiablo, name:"Tex mex", description:"Guacamole, ceviche, nachos, tacos ou tortillas... dépaysement garanti avec une cuisine Mexicaine savoureuse." ,price_cents:"400", photo_url: "http://www.pratico-pratiques.com/uploads/images/recipe/orig/salade-mexicaine-en-fleurs-de-tortillas%20(1).jpeg")
+
+dish_dessert1 = Dish.create!(category: "dessert", foodtruck: eltacodeldiablo, name:"Dessert chocolat", description:"Dessert au chocolat mexicain" ,price_cents:"400", photo_url: "http://www.preemodj.com/upload/2/c1/2c1975c1599969cc.jpg")
+dish_dessert2 = Dish.create!(category: "dessert", foodtruck: eltacodeldiablo, name:"Gateau Tres Leche", description:"Très bon gateau mexicain" ,price_cents:"500", photo_url: "http://www.costa-rica.fr/wp-content/uploads/2012/12/gateau-tres-leche.jpg")
+dish_dessert3 = Dish.create!(category: "dessert", foodtruck: eltacodeldiablo, name:"Dessert spécial", description:"gâteau au 3 laits mexicain" ,price_cents:"350", photo_url: "http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-streetfood.jpg")
+
 
 puts "END"
 
@@ -133,7 +146,8 @@ puts "Seeding Menu"
 
 menus_bagin = Menu.create!(foodtruck: bagin, name:'big bagel', description: "menu bagel complet avec salade", price_cents:'750')
 menus_westcoast = Menu.create!(foodtruck: westcoast, name:'big burger', description: "menu burger complet avec frites", price_cents:'1000')
-menus_eltacodeldiablo = Menu.create!(foodtruck: eltacodeldiablo, name:'big tacos', description: "menu tacos complet avec accompagnement", price_cents:'800')
+menus_eltacodeldiablo1 = Menu.create!(foodtruck: eltacodeldiablo, name:'Big Tacos', description: "Menu tacos complet avec accompagnement", price_cents:'15000')
+menus_eltacodeldiablo2 = Menu.create!(foodtruck: eltacodeldiablo, name:'Menu spécial Mexicain', description: "Menu tacos complet avec accompagnement et dessert", price_cents:'13000')
 
 
 puts "END Seeding Menu"
@@ -147,9 +161,14 @@ menus_dish_bagin = MenuDish.create!(menu: menus_bagin, dish: dish_bagel)
 menus_dish_westcoast = MenuDish.create!(menu: menus_westcoast, dish: dish_popcorn)
 menus_dish_westcoast = MenuDish.create!(menu: menus_westcoast, dish: dish_crepe)
 menus_dish_westcoast = MenuDish.create!(menu: menus_westcoast, dish: dish_burger)
-menus_dish_eltacodeldiablo = MenuDish.create!(menu: menus_eltacodeldiablo, dish: dish_donut)
-menus_dish_eltacodeldiablo = MenuDish.create!(menu: menus_eltacodeldiablo, dish: dish_muffin)
-menus_dish_eltacodeldiablo = MenuDish.create!(menu: menus_eltacodeldiablo, dish: dish_oasis)
+
+menus_dish_eltacodeldiablo1 = MenuDish.create!(menu: menus_eltacodeldiablo1, dish: dish_entree2)
+menus_dish_eltacodeldiablo1 = MenuDish.create!(menu: menus_eltacodeldiablo1, dish: dish_tacos4)
+menus_dish_eltacodeldiablo1 = MenuDish.create!(menu: menus_eltacodeldiablo1, dish: dish_dessert2)
+
+menus_dish_eltacodeldiablo2 = MenuDish.create!(menu: menus_eltacodeldiablo2, dish: dish_entree3)
+menus_dish_eltacodeldiablo2 = MenuDish.create!(menu: menus_eltacodeldiablo2, dish: dish_tacos2)
+menus_dish_eltacodeldiablo2 = MenuDish.create!(menu: menus_eltacodeldiablo2, dish: dish_dessert1)
 
 puts "END Seeding Menu"
 
