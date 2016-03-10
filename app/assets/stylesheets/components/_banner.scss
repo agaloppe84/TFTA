@@ -1,8 +1,11 @@
 .banner {
   color: white;
   text-align: center;
-  height: 65vh;
-  background-size: cover !important;
+  height: 70vh;
+  background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://lejournaldeleco.fr/wp-content/uploads/2015/02/5-food-truck-lecookpit-mariage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
   display: flex;
   align-items: center;
   justify-content: center;

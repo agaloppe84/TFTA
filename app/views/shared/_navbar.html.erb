@@ -8,20 +8,14 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-      <h1><%= current_user.email %></h1>
+      <h4>Bonjour <%= current_user.first_name %> <%= current_user.last_name %></h4>
       <!-- Notification -->
       <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
         <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
+          <i class="fa fa-truck"></i>
           <div class="badge badge-blue">3</div>
         </div>
       <% end %>
