@@ -102,11 +102,13 @@ puts "END"
 # -------------------------------- Foodtruck --------------------------------- #
 puts "Seeding Foodtruck"
 
-bagin = Foodtruck.create!(user: paul, sku:"", name:"Bag in", format:"truck", min_capacity:"40", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"bordeaux", culinary_style: occidentale)
-westcoast = Foodtruck.create!(user: pierre, sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges", culinary_style: burger)
-eltacodeldiablo = Foodtruck.create!(user: agathe, sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: bagel)
+bagin = Foodtruck.create!(user: paul, sku:"", name:"Bag in", format:"truck", min_capacity:"40", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"bordeaux", culinary_style: bagel, photo_urls:["http://thefoodtruck.agency/wp-content/uploads/2015/11/bagin-vignette.jpg","http://thefoodtruck.agency/wp-content/uploads/2015/11/Bagin-bandeau.jpg"])
+westcoast = Foodtruck.create!(user: pierre, sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges", culinary_style: burger, photo_urls:["http://thefoodtruck.agency/wp-content/uploads/2015/11/WestCoastBurger-vignette.jpg","http://thefoodtruck.agency/wp-content/uploads/2015/11/WestCoastBurger-bandeau.jpg"])
+eltacodeldiablo = Foodtruck.create!(user: agathe, sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: bagel, photo_urls:["http://thefoodtruck.agency/wp-content/uploads/2015/11/eltacodeldiablo-vignette.jpg","http://thefoodtruck.agency/wp-content/uploads/2015/11/eltacodeldiablo-bandeau.jpg"])
+lespouletoquees = Foodtruck.create!(user: dorothée, sku:"", name:"Les Poules Toquées", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: burger, photo_urls:["http://thefoodtruck.agency/wp-content/uploads/2016/03/lespoulestoquees-vignette.jpg","http://thefoodtruck.agency/wp-content/uploads/2016/03/lespoulestoquees-bandeau.jpg"])
 
-
+eattheroad = Foodtruck.create!(user: martin, sku:"", name:"Eat The Road", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: burger, photo_urls:["http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-vignette.jpg","http://thefoodtruck.agency/wp-content/uploads/2015/11/Eattheroad-bandeau1.jpg"])
+k2meal = Foodtruck.create!(user: martin, sku:"", name:"K2meal", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: français, photo_urls:["http://thefoodtruck.agency/wp-content/uploads/2015/11/K2Meal-vignette.jpg","http://thefoodtruck.agency/wp-content/uploads/2015/11/K2Meal-bandeau.jpg"])
 
 
 puts "END"
