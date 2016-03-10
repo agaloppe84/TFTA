@@ -52,7 +52,7 @@ class ReservationsController < ApplicationController
     else
       render "foodtrucks/show", alert: @reservation.errors.full_messages
     end
-  rescue Stripe::CardError => e
+    rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to @foodtruck
   end
