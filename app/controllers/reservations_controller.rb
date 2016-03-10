@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_action :set_reservation, only: [:show, :edit, :update, :destroy, :accept, :refuse]
   before_action :set_foodtruck, only: [:show, :new, :create]
 
   def index
@@ -16,15 +16,45 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
-    @reservation.user = current_user
+    @reservation = current_user.reservations.new(reservation_params)
     @reservation.foodtruck = @foodtruck
-    if @reservation.save
-      redirect_to foodtruck_reservation_path(@foodtruck, @reservation)
-    else
-      Rails.logger.info(@reservation.errors.full_messages)
-      render :new
+
+    @amount = session[:cart].reduce(0) { |memo, item| memo + (item["price"].to_i * item["number_of_meals"].to_i ) }
+
+    unless current_user.stripe_id
+      customer = Stripe::Customer.create(
+        source: params[:stripeToken],
+        email: params[:stripeEmail]
+      )
+      current_user.stripe_id = customer.id
+      current_user.save
     end
+
+    charge = Stripe::Charge.create(
+      customer: current_user.stripe_id,
+      amount:       @amount,  # in cents
+      description:  "Payment for reservation #{@reservation.id}",
+      currency:     'eur'
+    )
+
+    @reservation.update(payment: charge.to_json, status: 'paid')
+
+    if @reservation.save
+      session[:cart].each do |item|
+        @reservation.order_lines.create(
+          number_of_meals: item["number_of_meals"],
+          menu_id: item["menu_id"],
+          menu_price_cents: item["price"]
+        )
+      end
+      session[:cart] = []
+      redirect_to foodtruck_reservation_path(@foodtruck, @reservation), notice: "Well done papa !"
+    else
+      render "foodtrucks/show", alert: @reservation.errors.full_messages
+    end
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to @foodtruck
   end
 
   def edit
@@ -46,6 +76,18 @@ class ReservationsController < ApplicationController
     redirect_to reservations_path
   end
 
+  def accept
+    @reservation.accepted_at = DateTime.now
+    @reservation.save
+    redirect_to profil_path, notice: "Super :)"
+  end
+
+  def refuse
+    @reservation.refused_at = DateTime.now
+    @reservation.save
+    redirect_to profil_path, alert: "Oh mince, quel dommage :("
+  end
+
   private
 
   def set_reservation
@@ -54,6 +96,7 @@ class ReservationsController < ApplicationController
 
   def set_foodtruck
     @foodtruck = Foodtruck.find(params[:foodtruck_id])
+    @menus = @foodtruck.menus
   end
 
   def reservation_params

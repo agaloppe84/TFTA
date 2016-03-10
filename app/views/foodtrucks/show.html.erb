@@ -2,11 +2,9 @@
   <div class="text-center">
     <h1><%= @foodtruck.name %></h1>
 
-    <p>
-      <% if @foodtruck.photos? %>
-        <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
-      <% end %>
-    </p>
+    <% if @foodtruck.photos.any? %>
+      <%= render "foodtrucks/carousel", photos: @foodtruck.photos %>
+    <% end %>
 
     <p>address: <%= @foodtruck.address %></p>
     <p>Style culinaire: <%= @foodtruck.culinary_style.title %></p>
@@ -15,10 +13,8 @@
     <p>max KM gratuits<%= @foodtruck.free_radius_max %></p>
     <p>max Km déplacement<%= @foodtruck.radius_max %></p>
     <p>prix du KM: <%= @foodtruck.km_price %></p>
-    <h5><%= link_to "Commander", "", class: "btn btn-danger" %></h5>
-    <hr>
-    <h5><%= link_to "Retour", foodtrucks_path, class: "btn btn-primary" %></h5>
-    <p><%= link_to "Editer", edit_foodtruck_path, class: "btn btn-primary" %></p>
+
+    <p><%= link_to "Editer", edit_foodtruck_path(@foodtruck), class: "btn btn-primary" %></p>
   </div>
 
   <hr>
@@ -28,11 +24,10 @@
     <h5><%= link_to "NEW MENU", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
 
     <% @menus.each do |menu| %>
-      <li>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          <%= link_to menu.name, foodtruck_menu_path(@foodtruck, menu) %>
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#menu-<%= menu.id %>">
+          <%= menu.name %>
         </button>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="menu-<%= menu.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -47,10 +42,8 @@
                 <% end %>
                 <% menu.price %>
 
-                <%= simple_form_for @order_line do |f| %>
-                  <%= f.input :number_of_meals   %>
-                  <%= f.input :menu_id, as: :hidden, input_html: { value: menu.id } %>
-                  <%= f.input :reservation_id, as: :hidden, input_html: { value: @reservation.id } %>
+                <%= simple_form_for :order, url: menu_carts_path(menu) do |f| %>
+                  <%= f.input :number_of_meals %>
                   <%= f.submit "Ajouter au panier" %>
                 <% end %>
               </div>
@@ -60,17 +53,30 @@
             </div>
           </div>
         </div>
-      </li>
     <% end %>
 
     <br>
     <br>
     COMMANDER
+    <% if @cart.present? and user_signed_in? %>
+      <% @cart.each do |item| %>
+        <%= item.inspect %>
+        <%= link_to "delete", cart_path(item["id"]), method: :delete %>
+      <% end -%>
+      <hr>
+      <p>TOTAL: <%= sum_cart_symbol(@cart) %></p>
 
-    <%= simple_form_for @reservation do |f| %>
-      <%= f.input :shift_datetime %>
-      <%= f.input :address %>
-      <%= f.button :submit, "Valider ma reservation" %>
+      <%= simple_form_for [@foodtruck, @reservation] do |f| %>
+        <%= f.input :shift_datetime %>
+        <%= f.input :address %>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-email="<%= current_user.email %>"
+          data-name="Reservation FoodTruck"
+          data-description="Commande <%= @foodtruck.name %>"
+          data-amount="<%= sum_cart(@cart) %>"
+          data-currency="EUR"></script>
+      <% end %>
     <% end %>
   </div>
 </div>

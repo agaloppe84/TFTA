@@ -4,8 +4,8 @@
   <div class="row">
     <% @foodtrucks.each do |foodtruck| %>
       <div class="col-sm-6">
-        <% if foodtruck.photos? %>
-          <%= cl_image_tag foodtruck.photos.path, width: 300, height: 200, crop: :fill %>
+        <% if foodtruck.photos.any? %>
+          <%= cl_image_tag foodtruck.photos.first.path, width: 300, height: 200, crop: :fill %>
         <% end %>
         <h2>nom: <%= foodtruck.name %></h2>
         <h3>Style Culinaire: <%= foodtruck.culinary_style.title %></h3>

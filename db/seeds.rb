@@ -1,5 +1,3 @@
-puts "Destroying resa"
-Reservation.destroy_all
 puts "END"
 puts "Destroying order line"
 OrderLine.destroy_all
@@ -104,9 +102,9 @@ puts "END"
 # -------------------------------- Foodtruck --------------------------------- #
 puts "Seeding Foodtruck"
 
-bagin = Foodtruck.create!(sku:"", name:"Bag in", format:"truck", min_capacity:"40", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"bordeaux", culinary_style: occidentale)
-westcoast = Foodtruck.create!(sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges", culinary_style: burger)
-eltacodeldiablo = Foodtruck.create!(sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: bagel)
+bagin = Foodtruck.create!(user: paul, sku:"", name:"Bag in", format:"truck", min_capacity:"40", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"bordeaux", culinary_style: occidentale)
+westcoast = Foodtruck.create!(user: pierre, sku:"", name:"West Coast", format:"truck", min_capacity:"60", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"limoges", culinary_style: burger)
+eltacodeldiablo = Foodtruck.create!(user: agathe, sku:"", name:"El tacos del Diablo", format:"truck", min_capacity:"80", max_capacity:"250", free_radius_max:"50", radius_max:"150", km_price_cents:"120", address:"paris", culinary_style: bagel)
 
 
 

@@ -14,10 +14,18 @@ Rails.application.routes.draw do
   end
 
   resources :order_lines, only: [:create]
-  resources :reservations, only: [:update]
+  resources :reservations, only: [:update] do
+    member do
+      post :accept
+      post :refuse
+    end
+  end
 
   resources :dishes, only: [:destroy]
-  resources :menus, only: [:destroy]
+  resources :menus, only: [:destroy] do
+    resources :carts, only: [:create]
+  end
+  resources :carts, only: [:destroy]
 
   mount Attachinary::Engine => "/attachinary"
 

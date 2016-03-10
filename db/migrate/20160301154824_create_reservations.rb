@@ -6,8 +6,6 @@ class CreateReservations < ActiveRecord::Migration
       t.integer :mark
       t.monetize :payment, currency: { present: false }
       t.string :address
-      t.string :accepted_at
-      t.string :refused_at
       t.references :user, index: true, foreign_key: true
       t.references :foodtruck, index: true, foreign_key: true
 

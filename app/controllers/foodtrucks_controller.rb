@@ -8,14 +8,10 @@ class FoodtrucksController < ApplicationController
   end
 
   def show
-    pending_reservation = Reservation.pending_for_user_on_foodtruck(current_user, @foodtruck).last
-    if pending_reservation
-      @reservation = pending_reservation
-    else
-      @reservation = Reservation.create(user: current_user, foodtruck: @foodtruck)
-    end
+    @reservation = Reservation.new
     @menus = @foodtruck.menus
-    @order_line = OrderLine.new
+    @cart = session[:cart]
+    # TODO!!!!!! : REINIT session if different foodtruck than the one in session[:cart]
   end
 
   def new
@@ -50,6 +46,6 @@ class FoodtrucksController < ApplicationController
   end
 
   def foodtruck_params
-    params.require(:foodtruck).permit(:name, :format, :photo, :min_capacity, :max_capacity, :free_radius_max, :radius_max, :km_price, :address, :culinary_style_id)
+    params.require(:foodtruck).permit(:name, :format, :min_capacity, :max_capacity, :free_radius_max, :radius_max, :km_price, :address, :culinary_style_id, photos: [])
   end
 end
