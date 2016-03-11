@@ -1,0 +1,24 @@
+<h1>Mon panier</h1>
+<div class="user-bucket">
+  COMMANDER
+  <% if @cart.present? and user_signed_in? %>
+    <% @cart.each do |item| %>
+      <%= item.inspect %>
+      <%= link_to "delete", cart_path(item["id"]), method: :delete %>
+    <% end -%>
+    <hr>
+    <p>TOTAL: <%= sum_cart_symbol(@cart) %></p>
+
+    <%= simple_form_for [@foodtruck, @reservation] do |f| %>
+      <%= f.input :shift_datetime %>
+      <%= f.input :address %>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-email="<%= current_user.email %>"
+        data-name="Reservation FoodTruck"
+        data-description="Commande <%= @foodtruck.name %>"
+        data-amount="<%= sum_cart(@cart) %>"
+        data-currency="EUR"></script>
+    <% end %>
+  <% end %>
+</div>
