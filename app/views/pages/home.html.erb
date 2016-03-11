@@ -17,11 +17,14 @@
   <div class="container text-center padded features">
     <div class="row">
       <div class="card-home">
-            <% @foodtrucks.first(4).each do |foodtruck| %>
-              <%= render "foodtrucks/card", foodtruck: foodtruck %>
-            <% end %>
+        <% @foodtrucks.first(4).each do |foodtruck| %>
+          <%= render "foodtrucks/card", foodtruck: foodtruck %>
+        <% end %>
       </div>
     </div>
+    <br>
+    <br>
+    <br>
   <div class="container text-center">
     – COMMENT ÇA MARCHE ? –
   </div>
@@ -81,7 +84,3 @@
     </div>
   </div>
 </div>
-
-
-
-
