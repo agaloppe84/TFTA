@@ -146,8 +146,8 @@ puts "Seeding Menu"
 
 menus_bagin = Menu.create!(foodtruck: bagin, name:'big bagel', description: "menu bagel complet avec salade", price_cents:'750')
 menus_westcoast = Menu.create!(foodtruck: westcoast, name:'big burger', description: "menu burger complet avec frites", price_cents:'1000')
-menus_eltacodeldiablo1 = Menu.create!(foodtruck: eltacodeldiablo, name:'Big Tacos', description: "Menu tacos complet avec accompagnement", price_cents:'15000')
-menus_eltacodeldiablo2 = Menu.create!(foodtruck: eltacodeldiablo, name:'Menu spécial Mexicain', description: "Menu tacos complet avec accompagnement et dessert", price_cents:'13000')
+menus_eltacodeldiablo1 = Menu.create!(foodtruck: eltacodeldiablo, name:'Big Tacos', description: "Menu tacos complet avec accompagnement", price_cents:'15000', photo_url: "http://cdn-femina.ladmedia.fr/var/femina/storage/images/cuisine/idees-de-menus/pitas-burgers-tacos-les-sandwichs-de-l-ete/petits-pains-en-recettes-pitas-burgers-tacos/tacos-de-chorizo/3352016-1-fre-FR/Tacos-de-chorizo_current_diaporama.jpg")
+menus_eltacodeldiablo2 = Menu.create!(foodtruck: eltacodeldiablo, name:'Menu spécial Mexicain', description: "Menu tacos complet avec accompagnement et dessert", price_cents:'13000', photo_url: "http://cdn-femina.ladmedia.fr/var/femina/storage/images/cuisine/idees-de-menus/pitas-burgers-tacos-les-sandwichs-de-l-ete/petits-pains-en-recettes-pitas-burgers-tacos/tacos-de-chorizo/3352016-1-fre-FR/Tacos-de-chorizo_current_diaporama.jpg")
 
 
 puts "END Seeding Menu"
