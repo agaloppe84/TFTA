@@ -1,11 +1,13 @@
 <!-- -->
-<h1>Mon profil Food truck</h1>
-<% current_user.foodtrucks.each do |foodtruck| %>
-  <%= foodtruck.name %>
-  <p><%= link_to "Editer", edit_foodtruck_path(foodtruck), class: "btn btn-primary" %></p>
-  <ul>
-    <% foodtruck.reservations.each do |reservation| %>
-      <li>
+<div class="container text-center">
+  <h1>Mon profil Food truck</h1>
+  <% current_user.foodtrucks.each do |foodtruck| %>
+    <%= foodtruck.name %>
+    <p><%= link_to "Editer mon camion", edit_foodtruck_path(foodtruck), class: "btn btn-primary" %></p>
+    <p><%= link_to "Editer mes Plats", foodtruck_dishes_path(foodtruck), class: "btn btn-primary" %></p>
+    <p><%= link_to "Editer mes menus", foodtruck_menus_path(foodtruck), class: "btn btn-primary" %></p>
+    <h2>Mes réservation</h2>
+      <% foodtruck.reservations.each do |reservation| %>
         <p>Address : <%= reservation.address %></p>
         <p>Date : <%= reservation.shift_datetime %></p>
         <p>prix: <%= humanized_money_with_symbol reservation.total_price %></p>
@@ -16,9 +18,8 @@
           <%= "Accepté le #{l reservation.accepted_at}" if reservation.accepted_at %>
           <%= "Refusé le #{l reservation.refused_at}" if reservation.refused_at %>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
-  <hr>
-<% end %>
+      <% end %>
+    <hr>
+  <% end %>
+</div>
 
