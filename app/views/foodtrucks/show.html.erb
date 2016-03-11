@@ -39,7 +39,7 @@
                 Description du menu: <%= menu.description %>
                 <br><br>
                 <% if menu.photo? %>
-                  <%= cl_image_tag menu.photos.path, width: 300, height: 200, crop: :fill %>
+                  <%= cl_image_tag menu.photo.path, width: 300, height: 200, crop: :fill %>
                 <% end %>
                 <% menu.price %>
                 <%= simple_form_for :order, url: menu_carts_path(menu) do |f| %>
