@@ -1,12 +1,13 @@
-profil_user.html.erb
-<h1>User reservation</h1>
-<ul>
-  <% current_user.reservations.each do |reservation| %>
-    <li>
-      Address : <%= reservation.address %>
-    </li>
-    <li>
-      Date : <%= reservation.shift_datetime %>
-    </li>
-  <% end %>
-</ul>
+<div class="container text-center">
+  <h1>Mes réservation</h1>
+  <ul>
+    <% current_user.reservations.each do |reservation| %>
+      <li>
+        Address : <%= reservation.address %>
+      </li>
+      <li>
+        Date : <%= reservation.shift_datetime %>
+      </li>
+    <% end %>
+  </ul>
+</div>
