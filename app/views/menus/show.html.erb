@@ -6,8 +6,8 @@
     menus <%= @foodtruck.name %>
     <p>description: <%= @menu.description %></p>
   </div>
-    <p>photo: <% if @foodtruck.photos? %>
-      <%= cl_image_tag @foodtruck.photos.path, width: 400, height: 300, crop: :fill %>
+    <p>photo: <% if @foodtruck.photo? %>
+      <%= cl_image_tag @foodtruck.photo.path, width: 400, height: 300, crop: :fill %>
       <% end %></p>
     <p>price_cents: <%= @menu.price_cents %></p>
 
@@ -16,7 +16,7 @@
           <% @foodtruck.dishes.each do |member| %>
               <h3><%= member[:name] %></h3>
               <p><%= member[:culinary_styles] %></p>
-              <p><%=cl_image_tag member.photo, width: 200, height: 150, crop: :fill %></p>
+              <p><%=cl_image_tag member.photo.path, width: 200, height: 150, crop: :fill %></p>
               <% end %>
           </div>
       </div>

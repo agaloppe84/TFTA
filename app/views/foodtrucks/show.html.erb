@@ -1,86 +1,89 @@
-<div class="container">
-  <div class="text-center">
+<div class="container-fluid foodtruck-show">
+  <div class="foodtruck-banner" style="background-image: url('<%= image_url("banner-taco-del-diablo.jpg") %>');">
     <h1><%= @foodtruck.name %></h1>
-    <div>
+  </div>
+
+  <div class="foodtruck-details">
+    <div class="foodtruck-container foodtruck-description">
+      <span>Qui sommes nous ?</span>
+      <p>Après plusieurs années passées en Californie, années de rencontres,  de road-trips,  de découvertes gustatives, nous avons décidé de continuer l’aventure à Bordeaux (The French California!). Avec notre combi VW revisité en food truck, nous sillonnons Bordeaux et les environs pour vous faire découvrir notre cuisine mexicaine et californienne.</p>
+      <span>Informations</span>
+      <div class="foodtruck-info-container">
+        <div class="foodtruck-info">
+          <i><strong>Emplacement :</strong> <%= @foodtruck.address %></i>
+          <i><strong>Style culinaire :</strong> <%= @foodtruck.culinary_style.title %></i>
+          <i><strong>Minimum de repas :</strong> <%= @foodtruck.min_capacity %></i>
+          <i><strong>Maximum de repas :</strong> <%= @foodtruck.max_capacity %></i>
+        </div>
+        <div class="foodtruck-info">
+          <i><strong>Max KM gratuits :</strong> <%= @foodtruck.free_radius_max %></i>
+          <i><strong>Max Km déplacement :</strong> <%= @foodtruck.radius_max %></i>
+          <i><strong>Prix du KM :</strong> <%= @foodtruck.km_price %></i>
+        </div>
+      </div>
+    </div>
+    <div class="foodtruck-container">
       <% if @foodtruck.photos.any? %>
         <%= render "foodtrucks/carousel", photos: @foodtruck.photos %>
       <% end %>
     </div>
-
-    <p>address: <%= @foodtruck.address %></p>
-    <p>Style culinaire: <%= @foodtruck.culinary_style.title %></p>
-    <p>minimum de repas: <%= @foodtruck.min_capacity %></p>
-    <p>maximum de repas: <%= @foodtruck.max_capacity %></p>
-    <p>max KM gratuits<%= @foodtruck.free_radius_max %></p>
-    <p>max Km déplacement<%= @foodtruck.radius_max %></p>
-    <p>prix du KM: <%= @foodtruck.km_price %></p>
-
-    <p><%= link_to "Editer", edit_foodtruck_path(@foodtruck), class: "btn btn-primary" %></p>
   </div>
 
-  <hr>
 
-  <div class="text-center">
+  <div class="row foodtruck-menus">
     <h1>The Menus of <%= @foodtruck.name %></h1>
-    <h5><%= link_to "NEW MENU", new_foodtruck_menu_path(@foodtruck), class: "btn btn-primary" %></h5>
 
-    <% @menus.each do |menu| %>
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#menu-<%= menu.id %>">
-          <%= menu.name %>
-        </button>
-        <div class="modal fade" id="menu-<%= menu.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Menu: <%= menu.name %></h4>
-              </div>
-              <div class="modal-body">
-                Description du menu: <%= menu.description %>
-                <br><br>
-                <% if menu.photo? %>
-                  <%= cl_image_tag menu.photos.path, width: 300, height: 200, crop: :fill %>
-                <% end %>
-                <% menu.price %>
-                <%= simple_form_for :order, url: menu_carts_path(menu) do |f| %>
-                  <%= f.input :number_of_meals %>
-                  <%= f.submit "Ajouter au panier" %>
-                <% end %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <ul>
+      <% @menus.each do |menu| %>
+        <li class="card-menu">
+          <!-- CARD MENU -->
+          <a href="#" class="" data-toggle="modal" data-target="#menu-<%= menu.id %>">
+            <% if menu.photo %>
+              <%= cl_image_tag(menu.photo.path, width: 400, height: 300, crop: :fill) %>
+            <% else %>
+              <%= image_tag("http://www.topmenu.com/img/placeholder_en_514x514.png?1450896735", width: 400, height: 300) %>
+            <% end %>
+            <h2><%= menu.name %></h2>
+          </a>
+          <!-- MODAL | MENU -->
+          <div class="modal fade" id="menu-<%= menu.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Menu: <%= menu.name %></h4>
+                </div>
+                <div class="modal-body">
+                  Description du menu: <%= menu.description %>
+                  <br><br>
+                  <% if menu.photo %>
+                    <%= cl_image_tag menu.photo.path, width: 300, height: 200, crop: :fill %>
+                  <% end %>
+                  <% menu.price %>
+                  <%= simple_form_for :order, url: menu_carts_path(menu) do |f| %>
+                    <%= f.input :number_of_meals %>
+                    <%= f.submit "Ajouter au panier" %>
+                  <% end %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-    <% end %>
-
-    <br>
-    <br>
-    COMMANDER
-    <% if @cart.present? and user_signed_in? %>
-      <% @cart.each do |item| %>
-      <p>Nom du menu : <%= item["name"] %></p>
-      <p>Nombres de repas : <%= item["number_of_meals"] %></p>
-      <p>Prix : <%= item["price"] %></p>
-
-
-        <%= link_to "delete", cart_path(item["id"]), method: :delete %>
-      <% end -%>
-      <hr>
-      <p>TOTAL: <%= sum_cart_symbol(@cart) %></p>
-
-      <%= simple_form_for [@foodtruck, @reservation] do |f| %>
-        <%= f.input :shift_datetime %>
-        <%= f.input :address %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-email="<%= current_user.email %>"
-          data-name="Reservation FoodTruck"
-          data-description="Commande <%= @foodtruck.name %>"
-          data-amount="<%= sum_cart(@cart) %>"
-          data-currency="EUR"></script>
+        </li>
       <% end %>
-    <% end %>
+      <li class="card-menu">
+        <%= link_to new_foodtruck_menu_path(@foodtruck) do %>
+          <%= image_tag 'http://www.icone-png.com/png/30/29948.png', width: 400, height: 300 %>
+          <!--<#= menu.photo %> -->
+          <h2>Créer mon menu</h2>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+  <div class="checkout">
+    <%= render 'shared/bucket' %>
   </div>
 </div>
+
