@@ -1,13 +1,19 @@
 <h1>Mon panier</h1>
 <div class="user-bucket">
-  COMMANDER
   <% if @cart.present? and user_signed_in? %>
-    <% @cart.each do |item| %>
-      <%= item.inspect %>
-      <%= link_to "delete", cart_path(item["id"]), method: :delete %>
-    <% end -%>
-    <hr>
-    <p>TOTAL: <%= sum_cart_symbol(@cart) %></p>
+      <% @cart.each do |item| %>
+        <p>
+          <strong>
+            <%= item["name"] %>
+          </strong>
+          : <%= humanized_money_with_symbol( item["price"] / 100) %> x <%= item["number_of_meals"] %>
+        </p>
+        <%= link_to "delete", cart_path(item["id"]), method: :delete %>
+      <% end -%>
+      <hr>
+      <h4>TOTAL: <%= sum_cart_symbol(@cart) %></h4>
+
+      <br><br>
 
     <%= simple_form_for [@foodtruck, @reservation] do |f| %>
       <%= f.input :shift_datetime %>
@@ -18,7 +24,8 @@
         data-name="Reservation FoodTruck"
         data-description="Commande <%= @foodtruck.name %>"
         data-amount="<%= sum_cart(@cart) %>"
-        data-currency="EUR"></script>
+        data-currency="EUR">
+        </script>
     <% end %>
   <% end %>
 </div>

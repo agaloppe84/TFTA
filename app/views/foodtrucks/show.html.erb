@@ -38,8 +38,11 @@
         <li class="card-menu">
           <!-- CARD MENU -->
           <a href="#" class="" data-toggle="modal" data-target="#menu-<%= menu.id %>">
-            <%= image_tag 'burritos.jpg' %>
-            <!--<#= menu.photo %> -->
+            <% if menu.photo %>
+              <%= cl_image_tag(menu.photo.path, width: 400, height: 300, crop: :fill) %>
+            <% else %>
+              <%= image_tag("http://www.topmenu.com/img/placeholder_en_514x514.png?1450896735", width: 400, height: 300) %>
+            <% end %>
             <h2><%= menu.name %></h2>
           </a>
           <!-- MODAL | MENU -->
@@ -53,8 +56,8 @@
                 <div class="modal-body">
                   Description du menu: <%= menu.description %>
                   <br><br>
-                  <% if menu.photo? %>
-                    <%= cl_image_tag menu.photos.path, width: 300, height: 200, crop: :fill %>
+                  <% if menu.photo %>
+                    <%= cl_image_tag menu.photo.path, width: 300, height: 200, crop: :fill %>
                   <% end %>
                   <% menu.price %>
                   <%= simple_form_for :order, url: menu_carts_path(menu) do |f| %>
@@ -68,14 +71,13 @@
               </div>
             </div>
           </div>
-          <!-- END MODAL | MENU -->
         </li>
       <% end %>
       <li class="card-menu">
         <%= link_to new_foodtruck_menu_path(@foodtruck) do %>
-          <%= image_tag 'empty-plate.jpg' %>
-            <!--<#= menu.photo %> -->
-            <h2>Menu personalisé</h2>
+          <%= image_tag 'http://www.icone-png.com/png/30/29948.png', width: 400, height: 300 %>
+          <!--<#= menu.photo %> -->
+          <h2>Créer mon menu</h2>
         <% end %>
       </li>
     </ul>
