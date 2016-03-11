@@ -1,11 +1,10 @@
-
-  <div class="banner">
-    <div class="banner-content">
-      <h1>THE FOOD TRUCK AGENCY</h1>
-      <p>Réserver facilement votre foodtruck pour un évènement !</p>
-      <a><%= link_to "Find a food truck", foodtrucks_path, class: "btn btn-danger" %></a>
-    </div>
+<div class="banner">
+  <div class="banner-content">
+    <h1>THE FOOD TRUCK AGENCY</h1>
+    <p>Réserver facilement votre foodtruck pour un évènement !</p>
+    <%= link_to "Find a food truck", foodtrucks_path, class: "btn btn-danger" %>
   </div>
+</div>
 <div class="text-center">
   <h1 class="text-center"><strong>Découvrez et réservez l’un de nos Food Trucks partenaires</strong></h1>
   <p>Partout en France bénéficiez d’un large choix de Food Trucks pour restaurer vos invités !</p>
@@ -16,6 +15,21 @@
     <% @foodtrucks.first(4).each do |foodtruck| %>
       <%= render "foodtrucks/card", foodtruck: foodtruck %>
     <% end %>
+  </div>
+</div>
+– COMMENT ÇA MARCHE ? –
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg4">
+      <%= image_tag "1.png" %>
+
+    </div>
+    <div class="col-lg4">
+      <%= image_tag "2.png" %>
+    </div>
+    <div class="col-lg4">
+    <%= image_tag "3.png" %>
     </div>
   </div>
 </div>
