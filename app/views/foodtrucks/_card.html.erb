@@ -2,7 +2,7 @@
   <%= link_to foodtruck_path(foodtruck) do %>
       <% if foodtruck.photos.any? %>
         <div class="card-photo">
-          <%= cl_image_tag foodtruck.photos.first.path, width: 250, height: 200, crop: :fill %>
+          <%= cl_image_tag foodtruck.photos.first.path, width: 265, height: 200, crop: :fill %>
           <h2><%= foodtruck.name %></h2>
           <p><%= foodtruck.format %></p>
         </div>
