@@ -14,19 +14,19 @@
   <p>Partout en France bénéficiez d’un large choix de Food Trucks pour restaurer vos invités !</p>
 </div>
 
-<div class="container text-center padded features">
-  <div class="row">
-    <div class="card-home">
-      <% @foodtrucks.first(4).each do |foodtruck| %>
-        <%= render "foodtrucks/card", foodtruck: foodtruck %>
-      <% end %>
+  <div class="container text-center padded features">
+    <div class="row">
+      <div class="card-home">
+        <% @foodtrucks.first(4).each do |foodtruck| %>
+          <%= render "foodtrucks/card", foodtruck: foodtruck %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="container text-center delimiter">
-  <strong>– COMMENT ÇA MARCHE ? –</strong>
-</div>
+  <div class="container text-center">
+    – COMMENT ÇA MARCHE ? –
+  </div>
 
 
 <div class="container text-center">
@@ -82,7 +82,3 @@
     </div>
   </div>
 </div>
-
-
-
-

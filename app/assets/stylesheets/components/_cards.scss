@@ -1,10 +1,15 @@
-.card {
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  color: white;
-  position: relative;
+.card-photo {
+  display: inline-block;
+  background-color: white;
+  color: black;
+  font-size: 12px;
+  padding: 15px 15px 5px;
+  box-shadow: 0px 10px 10px 0px #c0c0c0;
+  h2 {
+    font-size: 20px;
+  }
 }
+
 .card-user {
   position: absolute;
   right: 10px;
