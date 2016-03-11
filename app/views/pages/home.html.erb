@@ -14,17 +14,19 @@
   <p>Partout en France bénéficiez d’un large choix de Food Trucks pour restaurer vos invités !</p>
 </div>
 
-  <div class="container text-center padded features">
-    <div class="row">
-      <div class="card-home">
-            <% @foodtrucks.first(4).each do |foodtruck| %>
-              <%= render "foodtrucks/card", foodtruck: foodtruck %>
-            <% end %>
-      </div>
+<div class="container text-center padded features">
+  <div class="row">
+    <div class="card-home">
+      <% @foodtrucks.first(4).each do |foodtruck| %>
+        <%= render "foodtrucks/card", foodtruck: foodtruck %>
+      <% end %>
     </div>
-  <div class="container text-center">
-    – COMMENT ÇA MARCHE ? –
   </div>
+</div>
+
+<div class="container text-center delimiter">
+  <strong>– COMMENT ÇA MARCHE ? –</strong>
+</div>
 
 
 <div class="container text-center">
@@ -32,7 +34,6 @@
     <div class="col-lg-4">
       <%= image_tag "1.png" %>
       <p>Je choisis le restaurateur idéal parmi la plus large sélection française de FoodTrucks</p>
-
     </div>
     <div class="col-lg-4">
       <%= image_tag "2.png" %>
@@ -45,7 +46,7 @@
   </div>
 </div>
 <div class="container text-center delimiter">
-  <strong>LES ATOUTS DES FOOD TRUCKS</strong>
+  <strong>– LES ATOUTS DES FOOD TRUCKS –</strong>
 </div>
 <div class="container">
   <div class="row">
