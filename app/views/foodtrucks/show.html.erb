@@ -60,7 +60,11 @@
     COMMANDER
     <% if @cart.present? and user_signed_in? %>
       <% @cart.each do |item| %>
-        <%= item.inspect %>
+      <p>Nom du menu : <%= item["name"] %></p>
+      <p>Nombres de repas : <%= item["number_of_meals"] %></p>
+      <p>Prix : <%= item["price"] %></p>
+
+
         <%= link_to "delete", cart_path(item["id"]), method: :delete %>
       <% end -%>
       <hr>
